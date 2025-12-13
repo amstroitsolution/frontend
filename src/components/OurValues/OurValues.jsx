@@ -97,8 +97,8 @@ export default function OurValues() {
     <section className="py-20 md:py-28 bg-gradient-to-b from-white via-gray-50 to-white relative overflow-hidden">
       {/* Clean Background */}
       <div className="absolute inset-0 opacity-[0.03]">
-        <div className="absolute top-1/4 left-0 w-96 h-96 bg-red-600 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-1/4 right-0 w-80 h-80 bg-amber-500 rounded-full blur-3xl"></div>
+        <div className="absolute top-1/4 left-0 w-96 h-96 rounded-full blur-3xl" style={{ background: '#de3cad' }}></div>
+        <div className="absolute bottom-1/4 right-0 w-80 h-80 rounded-full blur-3xl" style={{ background: '#e854c1' }}></div>
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -119,19 +119,20 @@ export default function OurValues() {
                 whileInView={{ width: "60px" }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.3, duration: 0.6 }}
-                className="h-1 bg-gradient-to-r from-red-800 via-red-600 to-amber-500 mb-4"
+                className="h-1 mb-4"
+                style={{ background: 'linear-gradient(135deg, #de3cad, #e854c1)' }}
               />
               <h2 className="text-4xl md:text-5xl font-bold text-slate-800 mb-6 leading-tight">
                 {settings?.sectionHeading ? (
                   <>
                     {settings.sectionHeading.split(' ').slice(0, -1).join(' ')}{' '}
-                    <span className="bg-gradient-to-r from-red-800 via-red-600 to-amber-500 bg-clip-text text-transparent font-black">
+                    <span className="bg-clip-text text-transparent font-black" style={{ backgroundImage: 'linear-gradient(135deg, #de3cad, #e854c1)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
                       {settings.sectionHeading.split(' ').slice(-1)}
                     </span>
                   </>
                 ) : (
                   <>
-                    Our <span className="bg-gradient-to-r from-red-800 via-red-600 to-amber-500 bg-clip-text text-transparent font-black">Values</span>
+                    Our <span className="bg-clip-text text-transparent font-black" style={{ backgroundImage: 'linear-gradient(135deg, #de3cad, #e854c1)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>Values</span>
                   </>
                 )}
               </h2>
@@ -191,7 +192,9 @@ export default function OurValues() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.6, delay: index * 0.1 }}
-                  className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 hover:border-red-200 group"
+                  className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 group"
+                  onMouseEnter={(e) => e.currentTarget.style.borderColor = '#de3cad'}
+                  onMouseLeave={(e) => e.currentTarget.style.borderColor = 'rgb(243, 244, 246)'}
                 >
                   <div className="flex items-start gap-4">
                     <div className="text-4xl group-hover:scale-110 transition-transform duration-300">
@@ -202,7 +205,9 @@ export default function OurValues() {
                       )}
                     </div>
                     <div className="flex-1">
-                      <h3 className="text-xl font-bold text-gray-800 mb-3 group-hover:text-red-600 transition-colors">
+                      <h3 className="text-xl font-bold text-gray-800 mb-3 transition-colors"
+                          onMouseEnter={(e) => e.target.style.color = '#de3cad'}
+                          onMouseLeave={(e) => e.target.style.color = 'rgb(31, 41, 55)'}>
                         {value.title}
                       </h3>
                       <p className="text-gray-600 leading-relaxed text-sm">

@@ -190,7 +190,8 @@ const InstaSarees = () => {
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                     onClick={() => handleInquiry(item)}
-                    className="w-full bg-gradient-to-r from-red-800 to-amber-600 text-white px-4 py-2 rounded-lg font-semibold hover:from-red-900 hover:to-amber-700 transition-all flex items-center justify-center space-x-2"
+                    style={{ background: 'linear-gradient(135deg, #de3cad, #e854c1)' }}
+                    className="w-full text-white px-4 py-2 rounded-lg font-semibold transition-all flex items-center justify-center space-x-2 hover:opacity-90"
                   >
                     <FaEnvelope size={12} />
                     <span>Inquire Now</span>

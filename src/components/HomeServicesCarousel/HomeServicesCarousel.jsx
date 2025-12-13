@@ -8,7 +8,8 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 
-const API = "http://localhost:5000/api/home-services";
+const API_BASE = import.meta.env.VITE_API_BASE_URL || "http://localhost:5000";
+const API = `${API_BASE}/api/home-services`;
 
 export default function HomeServicesCarousel() {
   const [items, setItems] = useState([]);
@@ -31,7 +32,7 @@ export default function HomeServicesCarousel() {
     fetchItems();
   }, []);
 
-  const toAbsolute = (url) => (url && url.startsWith("http") ? url : url ? `http://localhost:5000${url}` : "");
+  const toAbsolute = (url) => (url && url.startsWith("http") ? url : url ? `${API_BASE}${url}` : "");
 
   if (loading) {
     return (
@@ -49,8 +50,8 @@ export default function HomeServicesCarousel() {
     <section className="py-20 md:py-28 bg-gradient-to-b from-white via-gray-50 to-white relative overflow-hidden">
       {/* Clean Background */}
       <div className="absolute inset-0 opacity-[0.03]">
-        <div className="absolute top-20 left-1/4 w-72 h-72 bg-red-600 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-20 right-1/4 w-96 h-96 bg-red-600 rounded-full blur-3xl"></div>
+        <div className="absolute top-20 left-1/4 w-72 h-72 bg-pink-600 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-20 right-1/4 w-96 h-96 bg-pink-600 rounded-full blur-3xl"></div>
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -69,9 +70,9 @@ export default function HomeServicesCarousel() {
               transition={{ delay: 0.3, duration: 0.6 }}
               className="h-1 bg-gradient-to-r from-red-600 to-red-400 mx-auto mb-4"
             />
-            <span className="text-amber-600 font-semibold text-sm uppercase tracking-widest">Featured</span>
+            <span className="text-pink-600 font-semibold text-sm uppercase tracking-widest">Featured</span>
             <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-slate-800 mt-4 mb-4 leading-tight">
-              Downloadable <span className="bg-gradient-to-r from-red-800 via-red-600 to-amber-500 bg-clip-text text-transparent font-black">Resources</span>
+              Downloadable <span className="bg-gradient-to-r from-pink-600 via-pink-500 to-rose-500 bg-clip-text text-transparent font-black">Resources</span>
             </h2>
             <p className="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
               Templates, guides, and resources for your business
@@ -131,8 +132,8 @@ export default function HomeServicesCarousel() {
                     
                     {/* Subtle animated background effects */}
                     <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                      <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-amber-100/30 to-transparent rounded-full blur-xl"></div>
-                      <div className="absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-tr from-amber-50/20 to-transparent rounded-full blur-lg"></div>
+                      <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-pink-100/30 to-transparent rounded-full blur-xl"></div>
+                      <div className="absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-tr from-pink-50/20 to-transparent rounded-full blur-lg"></div>
                     </div>
 
                     {/* Clean Media Section */}
@@ -180,9 +181,9 @@ export default function HomeServicesCarousel() {
                     {/* Clean Content Section */}
                     <div className="p-6 relative">
                       {/* Animated underline */}
-                      <div className="absolute top-0 left-6 w-0 h-1 bg-red-600 group-hover:w-12 transition-all duration-300"></div>
+                      <div className="absolute top-0 left-6 w-0 h-1 bg-pink-600 group-hover:w-12 transition-all duration-300"></div>
                       
-                      <h3 className="text-xl font-bold text-slate-800 mb-2 group-hover:text-red-800 transition-colors duration-300 mt-2">
+                      <h3 className="text-xl font-bold text-slate-800 mb-2 group-hover:text-pink-600 transition-colors duration-300 mt-2">
                         {it.title}
                       </h3>
                       <p className="text-sm text-gray-600 mb-4 line-clamp-2 leading-relaxed">
@@ -211,10 +212,10 @@ export default function HomeServicesCarousel() {
           </Swiper>
 
           {/* Clean Navigation Buttons */}
-          <button className="swiper-button-prev-custom absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 z-10 w-14 h-14 bg-white rounded-full shadow-xl flex items-center justify-center text-gray-800 hover:bg-red-600 hover:text-white transition-all duration-300 hover:scale-110 hover:shadow-2xl group">
+          <button className="swiper-button-prev-custom absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 z-10 w-14 h-14 bg-white rounded-full shadow-xl flex items-center justify-center text-gray-800 hover:bg-pink-600 hover:text-white transition-all duration-300 hover:scale-110 hover:shadow-2xl group">
             <FaChevronLeft className="transform group-hover:-translate-x-0.5 transition-transform" />
           </button>
-          <button className="swiper-button-next-custom absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 z-10 w-14 h-14 bg-white rounded-full shadow-xl flex items-center justify-center text-gray-800 hover:bg-red-600 hover:text-white transition-all duration-300 hover:scale-110 hover:shadow-2xl group">
+          <button className="swiper-button-next-custom absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 z-10 w-14 h-14 bg-white rounded-full shadow-xl flex items-center justify-center text-gray-800 hover:bg-pink-600 hover:text-white transition-all duration-300 hover:scale-110 hover:shadow-2xl group">
             <FaChevronRight className="transform group-hover:translate-x-0.5 transition-transform" />
           </button>
         </div>

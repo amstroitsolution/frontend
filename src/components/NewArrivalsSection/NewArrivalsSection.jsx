@@ -31,8 +31,8 @@ export default function NewArrivalsSection() {
     <section className="py-20 md:py-28 bg-gradient-to-b from-gray-50 via-white to-gray-50 relative overflow-hidden">
       {/* Background Blobs */}
       <div className="absolute inset-0 opacity-[0.03]">
-        <div className="absolute top-1/4 right-0 w-96 h-96 bg-purple-500 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-1/4 left-0 w-80 h-80 bg-blue-500 rounded-full blur-3xl"></div>
+        <div className="absolute top-1/4 right-0 w-96 h-96 bg-pink-500 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-1/4 left-0 w-80 h-80 bg-rose-500 rounded-full blur-3xl"></div>
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -45,15 +45,15 @@ export default function NewArrivalsSection() {
           transition={{ duration: 0.8 }}
         >
           <div className="flex items-center justify-center gap-2 mb-3 md:mb-4">
-            <FaStar className="text-amber-500 text-xl md:text-2xl" />
-            <span className="text-purple-600 font-semibold text-xs md:text-sm uppercase tracking-widest">
+            <FaStar className="text-pink-500 text-xl md:text-2xl" />
+            <span className="text-pink-600 font-semibold text-xs md:text-sm uppercase tracking-widest">
               Fresh Arrivals
             </span>
           </div>
 
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-slate-800 mb-3">
             New{" "}
-            <span className="bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-pink-600 to-rose-600 bg-clip-text text-transparent">
               Arrivals
             </span>
           </h2>

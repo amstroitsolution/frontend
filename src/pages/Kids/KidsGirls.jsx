@@ -62,7 +62,7 @@ export default function KidsGirls() {
     {
       title: "Trending",
       icon: <FaCrown className="text-3xl" />,
-      color: "from-amber-500 to-orange-500",
+      color: "from-pink-500 to-rose-500",
       items: [
         { name: "New Arrivals", link: "/kids/girlnew" },
         { name: "Wedding Collection", link: "/kids/girlwedding" }
@@ -201,7 +201,8 @@ export default function KidsGirls() {
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
                         onClick={() => handleInquiry(product)}
-                        className="bg-gradient-to-r from-red-800 to-amber-600 text-white px-4 py-2 rounded-lg text-sm font-semibold hover:from-red-900 hover:to-amber-700 transition-all flex items-center space-x-2"
+                        style={{ background: 'linear-gradient(135deg, #de3cad, #e854c1)' }}
+                className="text-white px-4 py-2 rounded-lg text-sm font-semibold transition-all flex items-center space-x-2 hover:opacity-90"
                       >
                         <FaEnvelope size={12} />
                         <span>Inquire</span>

@@ -39,7 +39,7 @@ const StatsSection = () => {
     return (
       <section className="py-20 bg-gradient-to-br from-gray-50 to-white">
         <div className="max-w-7xl mx-auto px-6 text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-red-600 mx-auto mb-4"></div>
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 mx-auto mb-4" style={{ borderColor: '#de3cad' }}></div>
           <p className="text-gray-600">Loading stats...</p>
         </div>
       </section>
@@ -54,8 +54,8 @@ const StatsSection = () => {
     <section className="py-20 bg-gradient-to-br from-gray-50 to-white relative overflow-hidden">
       {/* Decorative background */}
       <div className="absolute inset-0 opacity-5">
-        <div className="absolute top-0 right-0 w-96 h-96 bg-red-600 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-0 left-0 w-96 h-96 bg-red-600 rounded-full blur-3xl"></div>
+        <div className="absolute top-0 right-0 w-96 h-96 rounded-full blur-3xl" style={{ background: '#de3cad' }}></div>
+        <div className="absolute bottom-0 left-0 w-96 h-96 rounded-full blur-3xl" style={{ background: '#e854c1' }}></div>
       </div>
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
@@ -65,7 +65,7 @@ const StatsSection = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <span className="text-red-600 font-medium text-sm uppercase tracking-wider">Our Impact</span>
+          <span className="font-medium text-sm uppercase tracking-wider" style={{ color: '#de3cad' }}>Our Impact</span>
           <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mt-2">
             Numbers That Speak
           </h2>
@@ -87,10 +87,10 @@ const StatsSection = () => {
                   whileHover={{ scale: 1.1 }}
                 >
                   {stat.value}
-                  <span className="text-red-600">{stat.suffix}</span>
+                  <span style={{ color: '#de3cad' }}>{stat.suffix}</span>
                 </motion.h3>
                 {/* Decorative line */}
-                <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-0 h-1 bg-red-600 group-hover:w-full transition-all duration-500"></div>
+                <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-0 h-1 group-hover:w-full transition-all duration-500" style={{ background: '#de3cad' }}></div>
               </div>
               <p className="text-gray-600 font-medium mt-4">{stat.label}</p>
             </motion.div>

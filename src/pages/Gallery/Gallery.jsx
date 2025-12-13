@@ -84,7 +84,7 @@ export default function SareeCollection() {
     <section className="min-h-screen bg-pink-50 pb-16">
       {/* Hero */}
       <div className="relative overflow-hidden">
-        <div className="h-64 md:h-80 lg:h-96 bg-gradient-to-r from-pink-500 to-purple-600 flex items-center justify-center">
+        <div className="h-64 md:h-80 lg:h-96 flex items-center justify-center" style={{ background: 'linear-gradient(135deg, #de3cad, #e854c1)' }}>
           <div className="relative z-20 text-center px-4">
             <h1 className="text-3xl md:text-5xl font-extrabold text-white drop-shadow-lg">Saree Collection</h1>
             <p className="mt-2 text-white/90 max-w-2xl mx-auto">Explore our exclusive Saree collections. Click on any card to view details.</p>
@@ -98,7 +98,7 @@ export default function SareeCollection() {
         <div className="pointer-events-none absolute inset-0 z-10">
           <div className="absolute -left-20 -top-10 w-72 h-72 rounded-full bg-pink-400 opacity-30 blur-3xl animate-float-slow" style={{ mixBlendMode: 'screen' }} />
           <div className="absolute right-10 -top-16 w-56 h-56 rounded-full bg-purple-400 opacity-25 blur-2xl animate-float-slower" style={{ mixBlendMode: 'screen' }} />
-          <div className="absolute left-1/2 top-10 w-40 h-40 rounded-full bg-yellow-300 opacity-20 blur-xl animate-float" style={{ transform: 'translateX(-50%)', mixBlendMode: 'screen' }} />
+          <div className="absolute left-1/2 top-10 w-40 h-40 rounded-full bg-pink-300 opacity-20 blur-xl animate-float" style={{ transform: 'translateX(-50%)', mixBlendMode: 'screen' }} />
         </div>
       </div>
 

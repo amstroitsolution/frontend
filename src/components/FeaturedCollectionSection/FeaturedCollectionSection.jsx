@@ -53,8 +53,8 @@ export default function FeaturedCollectionSection() {
   return (
     <section className="py-20 md:py-28 bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900 relative overflow-hidden">
       <div className="absolute inset-0 opacity-10">
-        <div className="absolute top-1/4 left-0 w-96 h-96 bg-amber-500 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-1/4 right-0 w-80 h-80 bg-red-500 rounded-full blur-3xl"></div>
+        <div className="absolute top-1/4 left-0 w-96 h-96 rounded-full blur-3xl" style={{ background: '#de3cad' }}></div>
+        <div className="absolute bottom-1/4 right-0 w-80 h-80 rounded-full blur-3xl" style={{ background: '#e854c1' }}></div>
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -67,12 +67,12 @@ export default function FeaturedCollectionSection() {
         >
           <div className="flex items-center justify-center gap-2 mb-4">
             <FaCrown className="text-amber-400 text-3xl" />
-            <span className="text-amber-400 font-semibold text-sm uppercase tracking-widest">
+            <span className="font-semibold text-sm uppercase tracking-widest" style={{ color: '#de3cad' }}>
               Curated For You
             </span>
           </div>
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
-            Featured <span className="bg-gradient-to-r from-amber-400 to-red-400 bg-clip-text text-transparent">Collections</span>
+            Featured <span className="bg-clip-text text-transparent" style={{ backgroundImage: 'linear-gradient(135deg, #ffffff, #e854c1)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>Collections</span>
           </h2>
           <p className="text-lg text-gray-300 max-w-2xl mx-auto">
             Handpicked premium collections just for you
@@ -127,10 +127,11 @@ export default function FeaturedCollectionSection() {
               key={index}
               onClick={() => setCurrentSlide(index)}
               className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                index === currentSlide 
-                  ? 'bg-amber-400 w-8' 
+                index === currentSlide
+                  ? 'w-8'
                   : 'bg-slate-600 hover:bg-slate-500'
               }`}
+              style={index === currentSlide ? { background: '#de3cad' } : {}}
             />
           ))}
         </div>

@@ -128,8 +128,8 @@ export default function SlowFashion() {
     <section className="py-20 md:py-28 bg-gradient-to-b from-white via-gray-50 to-white relative overflow-hidden">
       {/* Clean Background */}
       <div className="absolute inset-0 opacity-[0.03]">
-        <div className="absolute top-1/4 right-0 w-96 h-96 bg-amber-500 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-1/4 left-0 w-80 h-80 bg-red-600 rounded-full blur-3xl"></div>
+        <div className="absolute top-1/4 right-0 w-96 h-96 rounded-full blur-3xl" style={{ background: '#de3cad' }}></div>
+        <div className="absolute bottom-1/4 left-0 w-80 h-80 rounded-full blur-3xl" style={{ background: '#e854c1' }}></div>
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -150,10 +150,11 @@ export default function SlowFashion() {
                 whileInView={{ width: "60px" }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.3, duration: 0.6 }}
-                className="h-1 bg-gradient-to-r from-red-800 via-red-600 to-amber-500 mb-4"
+                className="h-1 mb-4"
+                style={{ background: 'linear-gradient(135deg, #de3cad, #e854c1)' }}
               />
               <h2 className="text-4xl md:text-5xl font-bold text-slate-800 mb-6 leading-tight">
-                Slow Fashion <span className="bg-gradient-to-r from-red-800 via-red-600 to-amber-500 bg-clip-text text-transparent font-black">Finds & Trendsetters</span>
+                Slow Fashion <span className="bg-clip-text text-transparent font-black" style={{ backgroundImage: 'linear-gradient(135deg, #de3cad, #e854c1)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>Finds & Trendsetters</span>
               </h2>
             </div>
 
@@ -217,14 +218,14 @@ export default function SlowFashion() {
                       <h4 className="font-semibold text-sm mb-1">{item.title}</h4>
                       <p className="text-xs opacity-90 mb-2">{item.description}</p>
                       <div className="flex justify-between items-center">
-                        <span className="text-amber-400 font-bold text-sm">{item.price}</span>
+                        <span className="text-pink-400 font-bold text-sm">{item.price}</span>
                         <span className="text-xs bg-white/20 px-2 py-1 rounded-full">{item.category}</span>
                       </div>
                     </div>
 
                     {/* Category Badge */}
                     <div className="absolute top-3 right-3">
-                      <span className="bg-gradient-to-r from-red-600 to-amber-500 text-white text-xs px-2 py-1 rounded-full font-semibold">
+                      <span className="text-white text-xs px-2 py-1 rounded-full font-semibold" style={{ background: 'linear-gradient(135deg, #de3cad, #e854c1)' }}>
                         {item.category}
                       </span>
                     </div>
@@ -262,10 +263,11 @@ export default function SlowFashion() {
                   key={index}
                   onClick={() => setCurrentSlide(index)}
                   className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                    index === currentSlide 
-                      ? 'bg-red-600 w-6' 
+                    index === currentSlide
+                      ? 'w-6'
                       : 'bg-slate-400 hover:bg-slate-600'
                   }`}
+                  style={index === currentSlide ? { background: '#de3cad' } : {}}
                 />
               ))}
             </div>

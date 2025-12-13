@@ -34,7 +34,7 @@ const GownDressesSection = () => {
     return (
       <section className="relative py-16 px-6 bg-gradient-to-br from-pink-50 via-white to-rose-50">
         <div className="max-w-7xl mx-auto text-center py-12">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-pink-600 mx-auto mb-4"></div>
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 mx-auto mb-4" style={{ borderColor: '#de3cad' }}></div>
           <p className="text-gray-600">Loading gowns collection...</p>
         </div>
       </section>
@@ -118,7 +118,8 @@ const GownDressesSection = () => {
         >
           <Link
             to="/dresses/gown-and-dresses"
-            className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-pink-600 to-red-500 text-white font-semibold rounded-full hover:from-pink-700 hover:to-red-600 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl"
+            style={{ background: 'linear-gradient(135deg, #de3cad, #e854c1)' }}
+            className="inline-flex items-center gap-2 px-8 py-4 text-white font-semibold rounded-full transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl hover:opacity-90"
           >
             View Full Collection
             <svg

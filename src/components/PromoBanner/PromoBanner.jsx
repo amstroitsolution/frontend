@@ -34,7 +34,7 @@ export default function PromoBanner() {
       icon: <FaGift className="text-3xl" />,
       title: "Special Offers",
       description: "Exclusive deals daily",
-      color: "from-amber-500 to-red-500"
+      color: "from-pink-500 to-rose-500"
     }
   ];
 
@@ -87,7 +87,8 @@ export default function PromoBanner() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Main Banner */}
         <motion.div
-          className="bg-gradient-to-r from-red-600 via-pink-600 to-purple-600 rounded-3xl p-8 md:p-12 mb-12 relative overflow-hidden"
+          className="rounded-3xl p-8 md:p-12 mb-12 relative overflow-hidden"
+          style={{ background: 'linear-gradient(135deg, #de3cad, #e854c1, #ffffff)' }}
           initial={{ opacity: 0, scale: 0.95 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
@@ -124,7 +125,8 @@ export default function PromoBanner() {
               >
                 <Link
                   to="/gallery"
-                  className="inline-block bg-white text-red-600 px-8 py-4 rounded-full font-bold hover:bg-gray-100 transition-all shadow-lg hover:shadow-xl"
+                  className="inline-block bg-white px-8 py-4 rounded-full font-bold hover:bg-gray-100 transition-all shadow-lg hover:shadow-xl"
+                  style={{ color: '#de3cad' }}
                 >
                   Shop Now →
                 </Link>

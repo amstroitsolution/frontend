@@ -54,7 +54,8 @@ export default function TrendingKids() {
   useEffect(() => {
     const fetchTrendingItems = async () => {
       try {
-        const response = await fetch('http://localhost:5000/api/kids-products?featured=true');
+        const apiBaseUrl = import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000';
+        const response = await fetch(`${apiBaseUrl}/api/kids-products?featured=true`);
         if (response.ok) {
           const data = await response.json();
           setTrendingItems(data.length > 0 ? data.slice(0, 4) : fallbackItems);
@@ -82,7 +83,7 @@ export default function TrendingKids() {
               <div className="h-4 bg-gray-300 rounded w-48 mx-auto"></div>
             </div>
           </div>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {[1, 2, 3, 4].map((i) => (
               <div key={i} className="animate-pulse">
                 <div className="bg-gray-300 h-64 rounded-2xl mb-4"></div>
@@ -117,7 +118,7 @@ export default function TrendingKids() {
           <p className="text-lg text-gray-600">Most loved by parents & kids</p>
         </motion.div>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {trendingItems.map((item, idx) => (
             <ProductCard
               key={item._id}

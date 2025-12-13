@@ -77,7 +77,7 @@ export default function SareeList() {
               )}
 
               <div className="absolute top-3 right-3">
-                <span className="inline-flex items-center px-3 py-1.5 bg-gradient-to-r from-red-800 to-amber-600 text-white text-xs font-semibold rounded-full capitalize shadow-lg group-hover:scale-110 transition-transform duration-300">
+                <span className="inline-flex items-center px-3 py-1.5 bg-gradient-to-r from-pink-600 to-rose-600 text-white text-xs font-semibold rounded-full capitalize shadow-lg group-hover:scale-110 transition-transform duration-300">
                   {it.type === "saree" ? "Saree" : "Lehenga"}
                 </span>
               </div>
@@ -113,13 +113,13 @@ export default function SareeList() {
               <div className="flex justify-between items-center pt-3 border-t border-gray-100">
                 <div>
                   <p className="text-xs text-gray-500 mb-1">Starting from</p>
-                  <span className="text-2xl font-bold bg-gradient-to-r from-red-800 to-amber-600 bg-clip-text text-transparent">
+                  <span className="text-2xl font-bold bg-gradient-to-r from-pink-600 to-rose-600 bg-clip-text text-transparent">
                     ₹{it.price?.toLocaleString() || 0}
                   </span>
                 </div>
                 <button
                   onClick={() => setSelected(it)}
-                  className="bg-gradient-to-r from-red-800 to-amber-600 hover:from-red-900 hover:to-amber-700 text-white px-6 py-2 rounded-lg font-semibold shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300"
+                  className="bg-gradient-to-r from-pink-600 to-rose-600 hover:from-pink-700 hover:to-rose-700 text-white px-6 py-2 rounded-lg font-semibold shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300"
                 >
                   Details
                 </button>
@@ -134,8 +134,8 @@ export default function SareeList() {
   return (
     <section className="py-20 md:py-28 bg-gradient-to-b from-gray-50 via-white to-gray-50 relative overflow-hidden">
       <div className="absolute inset-0 opacity-[0.03]">
-        <div className="absolute top-1/4 right-0 w-96 h-96 bg-red-600 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-1/4 left-0 w-80 h-80 bg-red-500 rounded-full blur-3xl"></div>
+        <div className="absolute top-1/4 right-0 w-96 h-96 bg-pink-600 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-1/4 left-0 w-80 h-80 bg-pink-500 rounded-full blur-3xl"></div>
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -149,12 +149,12 @@ export default function SareeList() {
               transition={{ duration: 0.8 }}
             >
               <div className="h-1 bg-gradient-to-r from-red-600 to-red-400 w-16 mx-auto mb-4"></div>
-              <span className="text-amber-600 font-semibold text-sm uppercase tracking-widest">
+              <span className="text-pink-600 font-semibold text-sm uppercase tracking-widest">
                 Shop Now
               </span>
               <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-slate-800 mt-4 mb-4 leading-tight">
                 Saree{" "}
-                <span className="bg-gradient-to-r from-red-800 via-red-600 to-amber-500 bg-clip-text text-transparent font-black">
+                <span className="bg-gradient-to-r from-pink-600 via-pink-500 to-rose-500 bg-clip-text text-transparent font-black">
                   Collections
                 </span>
               </h2>
@@ -178,7 +178,7 @@ export default function SareeList() {
               <div className="h-1 bg-gradient-to-r from-red-600 to-red-400 w-16 mx-auto mb-4"></div>
               <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-slate-800 mt-4 mb-4 leading-tight">
                 Lehenga{" "}
-                <span className="bg-gradient-to-r from-red-800 via-red-600 to-amber-500 bg-clip-text text-transparent font-black">
+                <span className="bg-gradient-to-r from-pink-600 via-pink-500 to-rose-500 bg-clip-text text-transparent font-black">
                   Collections
                 </span>
               </h2>
@@ -252,7 +252,7 @@ function DetailsModal({ item, onClose, apiBase }) {
               <div className="flex gap-3 mt-4">
                 <button
                   onClick={handleInquiry}
-                  className="flex-1 bg-gradient-to-r from-red-800 to-amber-600 text-white py-2 px-6 rounded-lg font-semibold hover:scale-105 transition-all duration-300 hover:from-red-900 hover:to-amber-700"
+                  className="flex-1 bg-gradient-to-r from-pink-600 to-rose-600 text-white py-2 px-6 rounded-lg font-semibold hover:scale-105 transition-all duration-300 hover:from-pink-700 hover:to-rose-700"
                 >
                   Inquire Now
                 </button>

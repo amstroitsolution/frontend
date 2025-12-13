@@ -31,7 +31,7 @@ const CursorFollower = () => {
     <>
       {/* Main cursor */}
       <motion.div
-        className="fixed w-4 h-4 bg-red-600 rounded-full pointer-events-none z-50 mix-blend-difference"
+        className="fixed w-4 h-4 bg-pink-600 rounded-full pointer-events-none z-50 mix-blend-difference"
         animate={{
           x: mousePosition.x - 8,
           y: mousePosition.y - 8,

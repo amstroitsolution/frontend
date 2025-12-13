@@ -95,7 +95,7 @@ const KidsProduct = () => {
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.9 }}
                     onClick={() => handleInquiry(item)}
-                    className="bg-gradient-to-r from-red-800 to-amber-600 text-white p-3 rounded-full shadow-lg hover:from-red-900 hover:to-amber-700 transition-all"
+                    className="bg-gradient-to-r from-pink-600 to-rose-600 text-white p-3 rounded-full shadow-lg hover:from-pink-700 hover:to-rose-700 transition-all"
                     title="Inquire About Product"
                   >
                     <FaEnvelope size={16} />
@@ -130,7 +130,7 @@ const KidsProduct = () => {
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   onClick={() => handleInquiry(item)}
-                  className="flex-1 bg-gradient-to-r from-red-800 to-amber-600 text-white px-3 py-2 rounded-lg font-semibold hover:from-red-900 hover:to-amber-700 transition-all flex items-center justify-center space-x-1"
+                  className="flex-1 bg-gradient-to-r from-pink-600 to-rose-600 text-white px-3 py-2 rounded-lg font-semibold hover:from-pink-700 hover:to-rose-700 transition-all flex items-center justify-center space-x-1"
                 >
                   <FaEnvelope size={12} />
                   <span>Inquire</span>
@@ -222,7 +222,7 @@ const KidsProduct = () => {
                       setIsDetailsOpen(false);
                       setIsInquiryOpen(true);
                     }}
-                    className="w-full bg-gradient-to-r from-red-800 to-amber-600 text-white px-6 py-3 rounded-lg font-semibold hover:from-red-900 hover:to-amber-700 transition-all flex items-center justify-center gap-2 shadow-lg"
+                    className="w-full bg-gradient-to-r from-pink-600 to-rose-600 text-white px-6 py-3 rounded-lg font-semibold hover:from-pink-700 hover:to-rose-700 transition-all flex items-center justify-center gap-2 shadow-lg"
                   >
                     <FaEnvelope size={16} />
                     <span>Inquire About This Product</span>

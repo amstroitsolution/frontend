@@ -15,7 +15,8 @@ const LoadingSpinner = ({ size = 'md', variant = 'default' }) => {
         {[0, 1, 2].map((i) => (
           <motion.div
             key={i}
-            className="w-3 h-3 bg-red-600 rounded-full"
+            style={{ background: 'linear-gradient(135deg, #de3cad, #e854c1)' }}
+            className="w-3 h-3 rounded-full"
             animate={{
               scale: [1, 1.5, 1],
               opacity: [1, 0.5, 1]
@@ -34,7 +35,8 @@ const LoadingSpinner = ({ size = 'md', variant = 'default' }) => {
   if (variant === 'pulse') {
     return (
       <motion.div
-        className={`${sizes[size]} rounded-full bg-red-600`}
+        style={{ background: 'linear-gradient(135deg, #de3cad, #e854c1)' }}
+        className={`${sizes[size]} rounded-full`}
         animate={{
           scale: [1, 1.2, 1],
           opacity: [1, 0.5, 1]
@@ -54,7 +56,8 @@ const LoadingSpinner = ({ size = 'md', variant = 'default' }) => {
         {[0, 1, 2, 3, 4].map((i) => (
           <motion.div
             key={i}
-            className="w-2 bg-red-600 rounded-full"
+            style={{ background: 'linear-gradient(135deg, #de3cad, #e854c1)' }}
+            className="w-2 rounded-full"
             animate={{
               height: ['20px', '48px', '20px']
             }}
@@ -73,7 +76,8 @@ const LoadingSpinner = ({ size = 'md', variant = 'default' }) => {
   return (
     <div className={`${sizes[size]} relative`}>
       <motion.div
-        className="absolute inset-0 border-4 border-red-600 border-t-transparent rounded-full"
+        style={{ borderColor: '#de3cad', borderTopColor: 'transparent' }}
+        className="absolute inset-0 border-4 rounded-full"
         animate={{ rotate: 360 }}
         transition={{
           duration: 1,
@@ -82,7 +86,8 @@ const LoadingSpinner = ({ size = 'md', variant = 'default' }) => {
         }}
       />
       <motion.div
-        className="absolute inset-2 border-4 border-red-400 border-b-transparent rounded-full"
+        style={{ borderColor: '#e854c1', borderBottomColor: 'transparent' }}
+        className="absolute inset-2 border-4 rounded-full"
         animate={{ rotate: -360 }}
         transition={{
           duration: 1.5,

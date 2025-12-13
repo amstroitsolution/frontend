@@ -78,8 +78,8 @@ export default function Navbar() {
           <img
   src="/yashper.png"
   alt="Yashper Logo"
-  className={`object-contain transition-all duration-300 hover:scale-105 ${
-    scrolled ? "w-10 h-10 md:w-14 md:h-14" : "w-12 h-12 md:w-16 md:h-16"
+  className={`object-contain transition-all duration-300 hover:scale-125 transform scale-125 ${
+    scrolled ? "w-12 h-12 md:w-14 md:h-14" : "w-14 h-14 md:w-16 md:h-16"
   }`}
           />
         </Link>
@@ -185,7 +185,8 @@ export default function Navbar() {
                   />
                 )}
                 <motion.span
-                  className="absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-pink-500 to-red-500"
+                  className="absolute bottom-0 left-0 h-0.5"
+                  style={{ background: 'linear-gradient(to right, #de3cad, #e854c1)' }}
                   initial={{ width: 0 }}
                   whileHover={{ width: "100%" }}
                   transition={{ duration: 0.3 }}
@@ -210,7 +211,7 @@ export default function Navbar() {
                       >
                         <Link
                           to={`${item.to}/${subItem.slug}`}
-                          className="block px-4 py-2.5 hover:bg-gradient-to-r hover:from-pink-50 hover:to-red-50 hover:text-pink-600 transition-all duration-300 border-b border-pink-50 last:border-0"
+                          className="block px-4 py-2.5 hover:text-pink-600 transition-all duration-300 border-b border-pink-50 last:border-0 hover:bg-pink-50"
                         >
                           <span className="flex items-center gap-2">
                             <span className="w-1.5 h-1.5 rounded-full bg-pink-400 opacity-0 group-hover:opacity-100 transition-opacity" />
@@ -265,7 +266,7 @@ export default function Navbar() {
                   <div
                     className={`flex justify-between items-center px-6 py-4 transition-all duration-300 cursor-pointer ${
                       location.pathname === item.to
-                        ? "bg-gradient-to-r from-pink-50 to-red-50 text-pink-600"
+                        ? "bg-pink-50 text-pink-600"
                         : "hover:bg-pink-50 hover:text-pink-600"
                     }`}
                     onClick={() =>
@@ -303,7 +304,7 @@ export default function Navbar() {
                         animate={{ height: "auto", opacity: 1 }}
                         exit={{ height: 0, opacity: 0 }}
                         transition={{ duration: 0.3 }}
-                        className="bg-gradient-to-r from-pink-50 to-red-50 overflow-hidden"
+                        className="bg-pink-50 overflow-hidden"
                       >
                         {item.dropdown.map((subItem, subIndex) => (
                           <motion.li
@@ -351,9 +352,9 @@ export default function Navbar() {
           left: 3px;
           width: calc(50% - 3px);
           height: calc(100% - 6px);
-          background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%);
+          background: linear-gradient(135deg, #de3cad 0%, #e854c1 100%);
           border-radius: 22px;
-          box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+          box-shadow: 0 2px 10px rgba(222, 60, 173, 0.3);
           z-index: 1;
         }
 
@@ -417,9 +418,9 @@ export default function Navbar() {
           left: 2px;
           width: calc(50% - 2px);
           height: calc(100% - 4px);
-          background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%);
+          background: linear-gradient(135deg, #de3cad 0%, #e854c1 100%);
           border-radius: 18px;
-          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+          box-shadow: 0 2px 8px rgba(222, 60, 173, 0.3);
           z-index: 1;
         }
 

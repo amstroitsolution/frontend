@@ -28,7 +28,7 @@ export default function TopStrip() {
   }
 
   return (
-    <div className="w-full bg-gradient-to-r from-pink-500 to-red-500 text-white text-center py-2 text-sm">
+    <div className="w-full text-white text-center py-2 text-sm" style={{ background: 'linear-gradient(135deg, #de3cad, #e854c1)' }}>
       <p>{topStrip.message}</p>
     </div>
   );

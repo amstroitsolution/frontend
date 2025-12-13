@@ -127,7 +127,7 @@ const KidsNav = () => {
   <img 
     src="/yashper.png" 
     alt="Yashper Logo" 
-    className="h-10 md:h-12 w-auto object-contain"
+    className="w-14 h-14 md:w-16 md:h-16 object-contain transition-all duration-300 hover:scale-125 transform scale-125"
   />
 </Link>
 
@@ -319,9 +319,9 @@ const KidsNav = () => {
           left: 3px;
           width: calc(50% - 3px);
           height: calc(100% - 6px);
-          background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%);
+          background: linear-gradient(135deg, #de3cad 0%, #e854c1 100%);
           border-radius: 22px;
-          box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+          box-shadow: 0 2px 10px rgba(222, 60, 173, 0.3);
           z-index: 1;
         }
 
@@ -385,9 +385,9 @@ const KidsNav = () => {
           left: 2px;
           width: calc(50% - 2px);
           height: calc(100% - 4px);
-          background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%);
+          background: linear-gradient(135deg, #de3cad 0%, #e854c1 100%);
           border-radius: 18px;
-          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+          box-shadow: 0 2px 8px rgba(222, 60, 173, 0.3);
           z-index: 1;
         }
 

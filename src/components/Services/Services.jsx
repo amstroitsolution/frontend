@@ -168,8 +168,8 @@ const Services = () => {
       <section className="py-20 md:py-28 bg-gradient-to-b from-white via-gray-50 to-white relative overflow-hidden">
         {/* Clean Background Effects */}
         <div className="absolute inset-0 opacity-[0.03]">
-          <div className="absolute top-20 left-10 w-72 h-72 bg-red-600 rounded-full blur-3xl"></div>
-          <div className="absolute bottom-20 right-10 w-96 h-96 bg-red-600 rounded-full blur-3xl"></div>
+          <div className="absolute top-20 left-10 w-72 h-72 bg-pink-600 rounded-full blur-3xl"></div>
+          <div className="absolute bottom-20 right-10 w-96 h-96 bg-pink-600 rounded-full blur-3xl"></div>
         </div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -186,11 +186,12 @@ const Services = () => {
                 whileInView={{ width: "60px" }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.3, duration: 0.6 }}
-                className="h-1 bg-gradient-to-r from-red-800 via-red-600 to-amber-500 mx-auto mb-4"
+                className="h-1 mx-auto mb-4"
+                style={{ background: 'linear-gradient(135deg, #de3cad, #e854c1)' }}
               />
-              <span className="text-amber-600 font-semibold text-sm uppercase tracking-widest">What We Offer</span>
+              <span className="font-semibold text-sm uppercase tracking-widest" style={{ color: '#de3cad' }}>What We Offer</span>
               <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-slate-800 mt-4 mb-4 leading-tight">
-                Fashion <span className="bg-gradient-to-r from-red-800 via-red-600 to-amber-500 bg-clip-text text-transparent font-black">Solutions</span>
+                Fashion <span className="bg-clip-text text-transparent font-black" style={{ backgroundImage: 'linear-gradient(135deg, #de3cad, #e854c1)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>Solutions</span>
               </h2>
               <p className="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
                 Comprehensive textile services with precision craftsmanship and modern technology
@@ -217,11 +218,13 @@ const Services = () => {
                 <div className="bg-white rounded-2xl p-8 text-center h-full shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100">
                   
                   {/* Subtle hover effects */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-amber-50/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  <div className="absolute inset-0 bg-gradient-to-br from-pink-50/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                   
                   {/* Icon */}
                   <motion.div 
-                    className="w-20 h-20 mx-auto mb-6 bg-gradient-to-br from-amber-50 to-red-50 rounded-2xl flex items-center justify-center group-hover:bg-gradient-to-br group-hover:from-red-800 group-hover:to-amber-600 transition-all duration-300 shadow-md group-hover:shadow-lg"
+                    className="w-20 h-20 mx-auto mb-6 bg-gradient-to-br from-pink-50 to-purple-50 rounded-2xl flex items-center justify-center transition-all duration-300 shadow-md group-hover:shadow-lg"
+                    onMouseEnter={(e) => e.currentTarget.style.background = 'linear-gradient(135deg, #de3cad, #e854c1)'}
+                    onMouseLeave={(e) => e.currentTarget.style.background = 'linear-gradient(to bottom right, rgb(253, 242, 248), rgb(250, 245, 255)'}
                     whileHover={{ scale: 1.1 }}
                     transition={{ duration: 0.3 }}
                   >
@@ -243,7 +246,16 @@ const Services = () => {
                   
                   {/* CTA Button */}
                   <motion.button 
-                    className="w-12 h-12 mx-auto flex items-center justify-center rounded-full bg-gradient-to-br from-amber-100 to-red-100 text-red-800 group-hover:bg-gradient-to-br group-hover:from-red-800 group-hover:to-amber-600 group-hover:text-white transition-all duration-300 text-xl font-bold shadow-md group-hover:shadow-lg"
+                    className="w-12 h-12 mx-auto flex items-center justify-center rounded-full bg-gradient-to-br from-pink-100 to-purple-100 transition-all duration-300 text-xl font-bold shadow-md group-hover:shadow-lg"
+                    style={{ color: '#de3cad' }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.background = 'linear-gradient(135deg, #de3cad, #e854c1)';
+                      e.currentTarget.style.color = 'white';
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.background = 'linear-gradient(to bottom right, rgb(252, 231, 243), rgb(243, 232, 255))';
+                      e.currentTarget.style.color = '#de3cad';
+                    }}
                     whileHover={{ scale: 1.1, rotate: 45 }}
                     whileTap={{ scale: 0.95 }}
                     transition={{ duration: 0.3 }}
@@ -304,11 +316,12 @@ const Services = () => {
                 whileInView={{ width: "60px" }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.3, duration: 0.6 }}
-                className="h-1 bg-gradient-to-r from-red-600 to-red-400 mb-4"
+                className="h-1 mb-4"
+                style={{ background: 'linear-gradient(135deg, #de3cad, #e854c1)' }}
               />
-              <span className="text-red-400 font-semibold text-xs md:text-sm uppercase tracking-widest">Member Benefits</span>
+              <span className="font-semibold text-xs md:text-sm uppercase tracking-widest" style={{ color: '#e854c1' }}>Member Benefits</span>
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 mt-4 leading-tight">
-                Preparing for Your Success with <span className="text-red-500">Trusted Partnership</span>
+                Preparing for Your Success with <span style={{ color: '#de3cad' }}>Trusted Partnership</span>
               </h2>
               <p className="text-gray-300 text-base md:text-lg mb-10 leading-relaxed">
                 We believe in the power of collaboration. Partner with industry leaders to foster innovation and drive positive change in the textile ecosystem. Together, we create lasting impact.
@@ -331,10 +344,13 @@ const Services = () => {
                     className="flex items-center gap-4 bg-white/5 backdrop-blur-sm rounded-xl p-5 hover:bg-white/10 transition-all duration-300 border border-white/10 group cursor-pointer"
                   >
                     <div className="relative">
-                      <span className="w-12 h-12 flex items-center justify-center rounded-full bg-red-600 text-white font-bold text-lg shadow-lg group-hover:shadow-red-600/50 transition-shadow">
+                      <span className="w-12 h-12 flex items-center justify-center rounded-full text-white font-bold text-lg shadow-lg transition-shadow"
+                            style={{ background: 'linear-gradient(135deg, #de3cad, #e854c1)' }}
+                            onMouseEnter={(e) => e.target.style.boxShadow = '0 10px 25px rgba(222, 60, 173, 0.5)'}
+                            onMouseLeave={(e) => e.target.style.boxShadow = '0 10px 15px -3px rgb(0 0 0 / 0.1)'}>
                         {item.icon}
                       </span>
-                      <div className="absolute inset-0 rounded-full bg-red-600 animate-ping opacity-0 group-hover:opacity-20"></div>
+                      <div className="absolute inset-0 rounded-full animate-ping opacity-0 group-hover:opacity-20" style={{ background: '#de3cad' }}></div>
                     </div>
                     <div>
                       <span className="text-base md:text-lg font-semibold block">{item.text}</span>
@@ -349,7 +365,7 @@ const Services = () => {
       </section>
 
       {/* --- Modern Stats Counter Section with Advanced Effects --- */}
-      <section id="counter-section" className="bg-gradient-to-r from-red-600 via-red-600 to-red-700 py-24 text-white relative overflow-hidden">
+      <section id="counter-section" className="py-24 text-white relative overflow-hidden" style={{ background: 'linear-gradient(135deg, #de3cad, #e854c1)' }}>
         {/* Animated background elements */}
         <div className="absolute inset-0 opacity-10">
           <motion.div 

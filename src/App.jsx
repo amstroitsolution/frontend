@@ -1,9 +1,9 @@
-import React from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
+
 
 // Pages Import
 import Home from "./pages/Home/Home";
-import Kids from "./pages/Kids/Kids"; 
+import Kids from "./pages/Kids/Kids";
 
 // Other pages
 import Dresses from "./pages/Dresses/Dresses";
@@ -45,6 +45,7 @@ import Contact from "./pages/Contact/Contact";
 // Components
 import Navbar from "./components/Navbar/Navbar";
 import KidsNav from "./components/Kids/KidsNav";
+import Footer from "./components/Footer/Footer";
 import KidsEthinics from "./pages/KidsEthinic/KidsEthinics";
 import SareeAnarkali from "./pages/KidsEthinic/SareeAnarkali";
 import PlazoSharara from "./pages/KidsEthinic/PlazoSharara";
@@ -86,6 +87,8 @@ export default function App() {
 
   return (
     <>
+
+
       {/* Fixed Navbar */}
       <div className="w-full fixed top-0 z-50">
         <CurrentNav />
@@ -140,53 +143,56 @@ export default function App() {
 
 
           {/* Kids Section pages  */}
-          <Route path="/kids/ethinics" element={<KidsEthinics/>}/>
-          <Route path="/kids/sareeanarkali" element={<SareeAnarkali/>}/>
-          <Route path="/kids/plazosharara" element={<PlazoSharara/>}/>
-          <Route path="/kids/paintsalwar" element={<PaintSalwar/>}/>
-          <Route path="/kids/lehngaghagra" element={<LehngasGhagra/>}/>
-          <Route path="/kids/kurtiesjums" element={<KurtiesJumsuit/>}/>
-          <Route path="/kids/dhotiespatiala" element={<DhotiesPatiala/>}/>
-          <Route path="/kids/Gowns" element={<Gowns/>}/>
+          <Route path="/kids/ethinics" element={<KidsEthinics />} />
+          <Route path="/kids/sareeanarkali" element={<SareeAnarkali />} />
+          <Route path="/kids/plazosharara" element={<PlazoSharara />} />
+          <Route path="/kids/paintsalwar" element={<PaintSalwar />} />
+          <Route path="/kids/lehngaghagra" element={<LehngasGhagra />} />
+          <Route path="/kids/kurtiesjums" element={<KurtiesJumsuit />} />
+          <Route path="/kids/dhotiespatiala" element={<DhotiesPatiala />} />
+          <Route path="/kids/Gowns" element={<Gowns />} />
 
 
-{/* kids Boys */}
-          <Route path="/kids/ethicjacket" element={<EthicJacket/>}/>
-          <Route path="/kids/ethicsets" element={<EthicStes/>}/>
-          <Route path="/kids/kurtaa" element={<Kurtaa/>}/>
-          <Route path="/kids/kurtasherwani" element={<KurtaSherwani/>}/>
-          <Route path="/kids/jumpsuite" element={<JumSuite/>}/>
-          <Route path="/kids/sets" element={<GirlSets/>}/>
-          <Route path="/kids/girldresses" element={<GirlDresses/>}/>
-          <Route path="/kids/girlnew" element={<GirlNewArrivle/>}/>
-          <Route path="/kids/girlwedding" element={<GirlWedding/>}/>
-     
-
-          <Route path="/kids/bodysuite" element={<BodySuite/>}/>
-          <Route path="/kids/inflant" element={<Infabt/>}/>
-          <Route path="/kids/jhablas" element={<Jhablas/>}/>
-          <Route path="/kids/swadless" element={<Swadless/>}/>
-
-          <Route path="/kids/newarrivle" element={<NewArrivle/>}/>
-          <Route path="/kids/weddings" element={<BouWeddings/>}/>
-
-         
-
-       
+          {/* kids Boys */}
+          <Route path="/kids/ethicjacket" element={<EthicJacket />} />
+          <Route path="/kids/ethicsets" element={<EthicStes />} />
+          <Route path="/kids/kurtaa" element={<Kurtaa />} />
+          <Route path="/kids/kurtasherwani" element={<KurtaSherwani />} />
+          <Route path="/kids/jumpsuite" element={<JumSuite />} />
+          <Route path="/kids/sets" element={<GirlSets />} />
+          <Route path="/kids/girldresses" element={<GirlDresses />} />
+          <Route path="/kids/girlnew" element={<GirlNewArrivle />} />
+          <Route path="/kids/girlwedding" element={<GirlWedding />} />
 
 
-        
-         
+          <Route path="/kids/bodysuite" element={<BodySuite />} />
+          <Route path="/kids/inflant" element={<Infabt />} />
+          <Route path="/kids/jhablas" element={<Jhablas />} />
+          <Route path="/kids/swadless" element={<Swadless />} />
+
+          <Route path="/kids/newarrivle" element={<NewArrivle />} />
+          <Route path="/kids/weddings" element={<BouWeddings />} />
+
+
+
+
+
+
+
+
 
 
 
           <Route path="/wedding" element={<Wedding />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
-        
+
         </Routes>
-        
+
       </div>
+
+      {/* Footer - appears on all pages */}
+      <Footer />
     </>
   );
 }

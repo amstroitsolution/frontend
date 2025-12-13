@@ -30,8 +30,8 @@ export default function TrendingSection() {
   return (
     <section className="py-20 md:py-28 bg-gradient-to-b from-white via-pink-50 to-white relative overflow-hidden">
       <div className="absolute inset-0 opacity-[0.03]">
-        <div className="absolute top-1/4 left-0 w-96 h-96 bg-pink-500 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-1/4 right-0 w-80 h-80 bg-red-500 rounded-full blur-3xl"></div>
+        <div className="absolute top-1/4 left-0 w-96 h-96 rounded-full blur-3xl" style={{ background: '#de3cad' }}></div>
+        <div className="absolute bottom-1/4 right-0 w-80 h-80 rounded-full blur-3xl" style={{ background: '#e854c1' }}></div>
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -43,13 +43,13 @@ export default function TrendingSection() {
           transition={{ duration: 0.8 }}
         >
           <div className="flex items-center justify-center gap-2 mb-4">
-            <FaFire className="text-red-600 text-3xl" />
-            <span className="text-red-600 font-semibold text-sm uppercase tracking-widest">
+            <FaFire className="text-3xl" style={{ color: '#de3cad' }} />
+            <span className="font-semibold text-sm uppercase tracking-widest" style={{ color: '#de3cad' }}>
               Hot Right Now
             </span>
           </div>
           <h2 className="text-4xl md:text-5xl font-bold text-slate-800 mb-4">
-            Trending <span className="bg-gradient-to-r from-pink-600 to-red-600 bg-clip-text text-transparent">This Week</span>
+            Trending <span className="bg-clip-text text-transparent" style={{ backgroundImage: 'linear-gradient(135deg, #de3cad, #e854c1)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>This Week</span>
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
             Discover what's hot and happening in fashion right now

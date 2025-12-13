@@ -7,7 +7,7 @@ const FeatureShowcase = () => {
       icon: "⚡",
       title: "Lightning Fast",
       description: "Optimized performance for seamless user experience",
-      color: "from-yellow-400 to-orange-500"
+      color: "from-pink-400 to-rose-500"
     },
     {
       icon: "🎨",
@@ -33,8 +33,8 @@ const FeatureShowcase = () => {
     <section className="py-24 bg-gradient-to-b from-gray-50 to-white relative overflow-hidden">
       {/* Background decoration */}
       <div className="absolute inset-0 opacity-5">
-        <div className="absolute top-0 left-1/4 w-96 h-96 bg-red-600 rounded-full blur-3xl animate-morph"></div>
-        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-red-600 rounded-full blur-3xl animate-morph" style={{ animationDelay: '3s' }}></div>
+        <div className="absolute top-0 left-1/4 w-96 h-96 rounded-full blur-3xl animate-morph" style={{ background: '#de3cad' }}></div>
+        <div className="absolute bottom-0 right-1/4 w-96 h-96 rounded-full blur-3xl animate-morph" style={{ background: '#e854c1', animationDelay: '3s' }}></div>
       </div>
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
@@ -45,7 +45,7 @@ const FeatureShowcase = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <span className="text-red-600 font-semibold text-sm uppercase tracking-widest">
+          <span className="font-semibold text-sm uppercase tracking-widest" style={{ color: '#de3cad' }}>
             Why Choose Us
           </span>
           <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mt-3 mb-4">
@@ -94,15 +94,16 @@ const FeatureShowcase = () => {
                 </p>
 
                 {/* Decorative corner */}
-                <div className="absolute top-0 right-0 w-20 h-20 bg-red-600/5 rounded-bl-full transform translate-x-10 -translate-y-10 group-hover:translate-x-0 group-hover:translate-y-0 transition-transform duration-500"></div>
-                
+                <div className="absolute top-0 right-0 w-20 h-20 rounded-bl-full transform translate-x-10 -translate-y-10 group-hover:translate-x-0 group-hover:translate-y-0 transition-transform duration-500" style={{ background: 'rgba(222, 60, 173, 0.05)' }}></div>
+
                 {/* Bottom accent line */}
-                <div className="absolute bottom-0 left-0 w-0 h-1 bg-red-600 group-hover:w-full transition-all duration-500"></div>
+                <div className="absolute bottom-0 left-0 w-0 h-1 group-hover:w-full transition-all duration-500" style={{ background: '#de3cad' }}></div>
               </div>
 
               {/* Floating badge */}
               <motion.div
-                className="absolute -top-3 -right-3 w-12 h-12 bg-red-600 rounded-full flex items-center justify-center text-white font-bold shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                className="absolute -top-3 -right-3 w-12 h-12 rounded-full flex items-center justify-center text-white font-bold shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                style={{ background: 'linear-gradient(135deg, #de3cad, #e854c1)' }}
                 whileHover={{ scale: 1.2, rotate: 360 }}
                 transition={{ duration: 0.5 }}
               >

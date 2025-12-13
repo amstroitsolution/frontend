@@ -228,7 +228,8 @@ const WatchBuySection = () => {
                       e.stopPropagation();
                       handleInquiry(item);
                     }}
-                    className="bg-gradient-to-r from-red-800 to-amber-600 text-white px-6 py-3 rounded-full font-semibold hover:from-red-900 hover:to-amber-700 transition-all duration-300 flex items-center space-x-2 shadow-lg hover:shadow-xl transform hover:scale-105"
+                    style={{ background: 'linear-gradient(135deg, #de3cad, #e854c1)' }}
+                    className="text-white px-6 py-3 rounded-full font-semibold transition-all duration-300 flex items-center space-x-2 shadow-lg hover:shadow-xl transform hover:scale-105 hover:opacity-90"
                   >
                     <FaEnvelope size={16} />
                     <span>Inquire Now</span>

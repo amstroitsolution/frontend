@@ -60,7 +60,7 @@ const Testimonials = () => {
     return (
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-6 text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-red-600 mx-auto mb-4"></div>
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 mx-auto mb-4" style={{ borderColor: '#de3cad' }}></div>
           <p className="text-gray-600">Loading testimonials...</p>
         </div>
       </section>
@@ -80,7 +80,7 @@ const Testimonials = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <span className="text-red-600 font-medium text-sm uppercase tracking-wider">Testimonials</span>
+          <span className="font-medium text-sm uppercase tracking-wider" style={{ color: '#de3cad' }}>Testimonials</span>
           <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mt-2 mb-4">
             What Our Clients Say
           </h2>
@@ -111,7 +111,7 @@ const Testimonials = () => {
                 className="bg-gray-50 rounded-2xl p-8 hover:shadow-xl transition-shadow duration-300 h-full"
               >
                 {/* Quote icon */}
-                <div className="text-red-600 text-5xl font-serif mb-4">"</div>
+                <div className="text-5xl font-serif mb-4" style={{ color: '#de3cad' }}>"</div>
                 
                 {/* Quote text */}
                 <p className="text-gray-700 leading-relaxed mb-6 italic">

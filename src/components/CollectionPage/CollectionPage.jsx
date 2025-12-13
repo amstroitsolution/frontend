@@ -1,12 +1,12 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { FaEye, FaEnvelope } from "react-icons/fa";
 import InquiryForm from "../InquiryForm/InquiryForm";
 
-const CollectionPage = ({ 
-  category, 
-  title, 
-  description, 
+const CollectionPage = ({
+  category,
+  title,
+  description,
   heroImage,
   badge = "COLLECTION"
 }) => {
@@ -24,10 +24,11 @@ const CollectionPage = ({
   const fetchProducts = async () => {
     try {
       setLoading(true);
+      const apiBaseUrl = import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000';
       const response = await fetch(
-        `http://localhost:5000/api/women-products?category=${encodeURIComponent(category)}&limit=12`
+        `${apiBaseUrl}/api/women-products?category=${encodeURIComponent(category)}&limit=12`
       );
-      
+
       if (!response.ok) {
         throw new Error("Failed to fetch products");
       }
@@ -203,7 +204,7 @@ const CollectionPage = ({
                     <div className="flex flex-col gap-2">
                       <button
                         onClick={() => handleInquiry(item)}
-                        className="bg-gradient-to-r from-red-800 to-amber-600 text-white px-4 py-2 rounded-full text-sm flex items-center gap-2 mx-auto hover:from-red-900 hover:to-amber-700 transition-all font-semibold"
+                        className="bg-gradient-to-r from-pink-600 to-rose-600 text-white px-4 py-2 rounded-full text-sm flex items-center gap-2 mx-auto hover:from-pink-700 hover:to-rose-700 transition-all font-semibold"
                       >
                         <FaEnvelope /> Inquire Now
                       </button>
@@ -255,7 +256,7 @@ const CollectionPage = ({
                   setSelected(null);
                   handleInquiry(selected);
                 }}
-                className="bg-gradient-to-r from-red-800 to-amber-600 text-white px-5 py-2 rounded-full hover:from-red-900 hover:to-amber-700 transition font-semibold"
+                className="bg-gradient-to-r from-pink-600 to-rose-600 text-white px-5 py-2 rounded-full hover:from-pink-700 hover:to-rose-700 transition font-semibold"
               >
                 Inquire Now
               </button>

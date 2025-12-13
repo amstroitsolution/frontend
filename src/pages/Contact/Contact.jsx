@@ -27,7 +27,8 @@ const Contact = () => {
     setSuccess(false);
 
     try {
-      const response = await fetch('http://localhost:5000/api/contact', {
+      const apiBaseUrl = import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000';
+      const response = await fetch(`${apiBaseUrl}/api/contact`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -71,7 +72,7 @@ const Contact = () => {
               <i className="fas fa-map-marker-alt"></i>
               <div>
                 <h3>Address</h3>
-                <p>Fashion Hub, Main Market<br />Delhi, India - 110001</p>
+                <p>FF 06, Global Foyer Mall, Sector 1,<br />Pocket H, Palam Vihar,<br />Gurugram, Haryana - 122017</p>
               </div>
             </div>
             <div className="info-item">

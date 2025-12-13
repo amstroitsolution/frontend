@@ -14,7 +14,7 @@ const Newsletter = () => {
   };
 
   return (
-    <section className="py-20 bg-gradient-to-br from-red-600 to-red-700 relative overflow-hidden">
+    <section className="py-20 relative overflow-hidden" style={{ background: 'linear-gradient(135deg, #de3cad, #e854c1)' }}>
       {/* Decorative elements */}
       <div className="absolute inset-0 opacity-10">
         <div className="absolute top-0 left-0 w-96 h-96 bg-white rounded-full blur-3xl"></div>
@@ -49,7 +49,8 @@ const Newsletter = () => {
                 type="submit"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="px-8 py-4 bg-white text-red-600 font-semibold rounded-lg hover:bg-gray-100 transition-colors duration-300 whitespace-nowrap"
+                className="px-8 py-4 bg-white font-semibold rounded-lg hover:bg-gray-100 transition-colors duration-300 whitespace-nowrap"
+                style={{ color: '#de3cad' }}
               >
                 Subscribe
               </motion.button>

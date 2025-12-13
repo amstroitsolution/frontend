@@ -41,7 +41,7 @@ const ProductCard = ({
           <img
             src={
               product.images && product.images[0]
-                ? `http://localhost:5000${product.images[0]}`
+                ? `${import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000'}${product.images[0]}`
                 : product.image || 'https://via.placeholder.com/300x400'
             }
             alt={product.title || product.name}
@@ -51,7 +51,7 @@ const ProductCard = ({
           {/* Badge */}
           {showBadge && (badgeText || product.badge) && (
             <div className="absolute top-3 left-3">
-              <span className="bg-gradient-to-r from-red-800 to-amber-600 text-white text-xs px-3 py-1 rounded-full font-bold">
+              <span className="text-white text-xs px-3 py-1 rounded-full font-bold" style={{ background: 'linear-gradient(135deg, #de3cad, #e854c1)' }}>
                 {badgeText || product.badge}
               </span>
             </div>
@@ -77,7 +77,8 @@ const ProductCard = ({
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
                 onClick={handleInquiryClick}
-                className="bg-gradient-to-r from-red-800 to-amber-600 text-white p-3 rounded-full shadow-lg hover:from-red-900 hover:to-amber-700 transition-all"
+                style={{ background: 'linear-gradient(135deg, #de3cad, #e854c1)' }}
+                className="text-white p-3 rounded-full shadow-lg transition-all hover:opacity-90"
                 title="Inquire About Product"
               >
                 <FaEnvelope size={16} />
@@ -99,7 +100,8 @@ const ProductCard = ({
           
           <div className="flex flex-col space-y-3">
             <div className="flex items-center justify-between">
-              <p className={`text-xl font-bold ${className?.includes('text-white') ? 'text-amber-400' : 'text-red-700'}`}>
+              <p className={`text-xl font-bold ${className?.includes('text-white') ? 'text-white' : ''}`}
+                 style={!className?.includes('text-white') ? { color: '#de3cad' } : {}}>
                 {product.price ? `₹${product.price}` : 'Price on Request'}
               </p>
             </div>
@@ -119,7 +121,8 @@ const ProductCard = ({
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={handleInquiryClick}
-                className="flex-1 bg-gradient-to-r from-red-800 to-amber-600 text-white px-4 py-3 rounded-lg font-semibold hover:from-red-900 hover:to-amber-700 transition-all flex items-center justify-center space-x-2 shadow-md hover:shadow-lg"
+                style={{ background: 'linear-gradient(135deg, #de3cad, #e854c1)' }}
+                className="flex-1 text-white px-4 py-3 rounded-lg font-semibold transition-all flex items-center justify-center space-x-2 shadow-md hover:shadow-lg hover:opacity-90"
               >
                 <FaEnvelope size={14} />
                 <span>Inquire</span>
@@ -167,7 +170,7 @@ const ProductCard = ({
                 <img
                   src={
                     product.images && product.images[0]
-                      ? `http://localhost:5000${product.images[0]}`
+                      ? `${import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000'}${product.images[0]}`
                       : product.image || 'https://via.placeholder.com/400x500'
                   }
                   alt={product.title || product.name}
@@ -201,7 +204,7 @@ const ProductCard = ({
                   </div>
                   
                   <div className="mb-4">
-                    <p className="text-3xl font-bold text-red-700 mb-2">
+                    <p className="text-3xl font-bold mb-2" style={{ color: '#de3cad' }}>
                       {product.price ? `₹${product.price}` : 'Price on Request'}
                     </p>
                     {product.originalPrice && product.originalPrice > product.price && (
@@ -266,7 +269,8 @@ const ProductCard = ({
                       setIsDetailsOpen(false);
                       setIsInquiryOpen(true);
                     }}
-                    className="w-full bg-gradient-to-r from-red-800 to-amber-600 text-white px-6 py-3 rounded-lg font-semibold hover:from-red-900 hover:to-amber-700 transition-all flex items-center justify-center gap-2 shadow-lg"
+                    style={{ background: 'linear-gradient(135deg, #de3cad, #e854c1)' }}
+                    className="w-full text-white px-6 py-3 rounded-lg font-semibold transition-all flex items-center justify-center gap-2 shadow-lg hover:opacity-90"
                   >
                     <FaEnvelope size={16} />
                     <span>Inquire About This Product</span>

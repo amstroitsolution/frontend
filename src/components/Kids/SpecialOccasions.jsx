@@ -30,7 +30,7 @@ export default function SpecialOccasions() {
       description: "Elegant ethnic wear for special ceremonies",
       image: "https://images.unsplash.com/photo-1519741497674-611481863552?w=400&h=300&fit=crop",
       link: "/kids/girls/wedding",
-      color: "from-amber-500 to-orange-500",
+      color: "from-pink-500 to-rose-500",
       order: 1
     },
     {
@@ -93,7 +93,7 @@ export default function SpecialOccasions() {
     return (
       <section className="py-20 bg-gradient-to-b from-white via-purple-50 to-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center py-12">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-purple-600 mx-auto mb-4"></div>
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 mx-auto mb-4" style={{ borderColor: '#de3cad' }}></div>
           <p className="text-gray-600">Loading special occasions...</p>
         </div>
       </section>
@@ -114,7 +114,7 @@ export default function SpecialOccasions() {
           viewport={{ once: true }}
         >
           <h2 className="text-4xl md:text-5xl font-bold text-slate-800 mb-4">
-            Special <span className="bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">Occasions</span>
+            Special <span className="bg-clip-text text-transparent" style={{ backgroundImage: 'linear-gradient(135deg, #de3cad, #e854c1)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>Occasions</span>
           </h2>
           <p className="text-lg text-gray-600">Perfect outfits for every celebration</p>
         </motion.div>

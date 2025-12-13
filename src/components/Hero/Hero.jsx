@@ -108,7 +108,7 @@ export default function Hero() {
         {[...Array(25)].map((_, i) => (
           <motion.div
             key={i}
-            className="absolute w-1.5 h-1.5 bg-red-500/20 rounded-full"
+            className="absolute w-1.5 h-1.5 bg-pink-500/20 rounded-full"
             initial={{
               x: Math.random() * window.innerWidth,
               y: Math.random() * window.innerHeight,
@@ -165,7 +165,7 @@ export default function Hero() {
               className="max-w-3xl md:max-w-4xl"
             >
               <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-6">
-                <div className="w-8 sm:w-12 h-0.5 bg-red-600"></div>
+                <div className="w-8 sm:w-12 h-0.5" style={{ background: '#de3cad' }}></div>
                 <span className="text-amber-400 text-xs sm:text-sm font-semibold uppercase tracking-widest">
                   {slides[current].subtitle || "Welcome to Excellence"}
                 </span>
@@ -196,12 +196,6 @@ export default function Hero() {
                 className="flex flex-wrap gap-3 sm:gap-4"
               >
                 <Link
-                  to={slides[current].ctaLink || "/contact"}
-                  className="px-6 sm:px-8 py-3 sm:py-4 bg-red-600 text-white font-semibold rounded-lg hover:bg-red-700 transition-all"
-                >
-                  {slides[current].ctaText || "Meet With Us"}
-                </Link>
-                <Link
                   to="/about"
                   className="px-6 sm:px-8 py-3 sm:py-4 bg-white/10 text-white font-semibold rounded-lg border border-white/20 hover:bg-white/20 transition-all"
                 >
@@ -217,14 +211,19 @@ export default function Hero() {
       <motion.button
         onClick={prevSlide}
         whileHover={{ scale: 1.1, x: -5 }}
-        className="absolute left-4 sm:left-8 top-1/2 -translate-y-1/2 bg-white/10 hover:bg-red-600 text-white p-3 sm:p-4 rounded-xl border border-white/20 z-10"
+        className="absolute left-4 sm:left-8 top-1/2 -translate-y-1/2 bg-white/10 text-white p-3 sm:p-4 rounded-xl border border-white/20 z-10 transition-all"
+        style={{ '&:hover': { background: '#de3cad' } }}
+        onMouseEnter={(e) => e.currentTarget.style.background = '#de3cad'}
+        onMouseLeave={(e) => e.currentTarget.style.background = 'rgba(255, 255, 255, 0.1)'}
       >
         <FaChevronLeft size={16} className="sm:size-20" />
       </motion.button>
       <motion.button
         onClick={nextSlide}
         whileHover={{ scale: 1.1, x: 5 }}
-        className="absolute right-4 sm:right-8 top-1/2 -translate-y-1/2 bg-white/10 hover:bg-red-600 text-white p-3 sm:p-4 rounded-xl border border-white/20 z-10"
+        className="absolute right-4 sm:right-8 top-1/2 -translate-y-1/2 bg-white/10 text-white p-3 sm:p-4 rounded-xl border border-white/20 z-10 transition-all"
+        onMouseEnter={(e) => e.currentTarget.style.background = '#de3cad'}
+        onMouseLeave={(e) => e.currentTarget.style.background = 'rgba(255, 255, 255, 0.1)'}
       >
         <FaChevronRight size={16} />
       </motion.button>
@@ -236,9 +235,10 @@ export default function Hero() {
             key={index}
             onClick={() => setCurrent(index)}
             className={`rounded-full transition-all duration-500 ${index === current
-              ? "bg-red-600 w-8 sm:w-12 h-2.5"
+              ? "w-8 sm:w-12 h-2.5"
               : "bg-white/40 w-2.5 h-2.5 hover:bg-white/60"
               }`}
+            style={index === current ? { background: '#de3cad' } : {}}
           />
         ))}
       </div>

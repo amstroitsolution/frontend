@@ -43,7 +43,7 @@ const InquiryForm = ({ isOpen, onClose, product, productType }) => {
         ...formData
       };
 
-      const response = await fetch('http://localhost:5000/api/inquiries', {
+      const response = await fetch(`${import.meta.env.VITE_API_BASE_URL || "http://localhost:5000"}/api/inquiries`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -97,7 +97,7 @@ const InquiryForm = ({ isOpen, onClose, product, productType }) => {
             onClick={(e) => e.stopPropagation()}
           >
             {/* Header */}
-            <div className="bg-gradient-to-r from-red-800 to-amber-600 text-white p-6 rounded-t-2xl">
+            <div className="text-white p-6 rounded-t-2xl" style={{ background: 'linear-gradient(135deg, #de3cad, #e854c1)' }}>
               <div className="flex justify-between items-center">
                 <h2 className="text-xl font-bold">Product Inquiry</h2>
                 <button
@@ -114,7 +114,7 @@ const InquiryForm = ({ isOpen, onClose, product, productType }) => {
               <div className="flex items-center space-x-4">
                 {product.images && product.images[0] && (
                   <img
-                    src={`http://localhost:5000${product.images[0]}`}
+                    src={`${import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000'}${product.images[0]}`}
                     alt={product.title || product.name}
                     className="w-16 h-16 object-cover rounded-lg"
                   />
@@ -147,7 +147,7 @@ const InquiryForm = ({ isOpen, onClose, product, productType }) => {
                 <motion.div
                   initial={{ opacity: 0, y: -10 }}
                   animate={{ opacity: 1, y: 0 }}
-                  className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded-lg mb-4"
+                  className="bg-pink-100 border border-pink-400 text-pink-700 px-4 py-3 rounded-lg mb-4"
                 >
                   <p className="font-semibold">Error sending inquiry</p>
                   <p className="text-sm">Please try again or contact us directly.</p>
@@ -228,7 +228,8 @@ const InquiryForm = ({ isOpen, onClose, product, productType }) => {
                   disabled={isSubmitting}
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
-                  className="w-full bg-gradient-to-r from-red-800 to-amber-600 text-white py-3 px-6 rounded-lg font-semibold flex items-center justify-center space-x-2 hover:from-red-900 hover:to-amber-700 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                  style={{ background: 'linear-gradient(135deg, #de3cad, #e854c1)' }}
+                  className="w-full text-white py-3 px-6 rounded-lg font-semibold flex items-center justify-center space-x-2 transition-all disabled:opacity-50 disabled:cursor-not-allowed hover:opacity-90"
                 >
                   {isSubmitting ? (
                     <>

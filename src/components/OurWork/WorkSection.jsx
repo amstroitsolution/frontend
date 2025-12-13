@@ -31,8 +31,8 @@ export default function WorkSection({ title = "Our Work", limit = 6 }) {
     <section className="py-20 md:py-28 bg-gradient-to-b from-gray-50 via-white to-gray-50 relative overflow-hidden">
       {/* Clean Background Effects */}
       <div className="absolute inset-0 opacity-[0.03]">
-        <div className="absolute top-1/3 left-10 w-96 h-96 bg-red-600 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-1/3 right-10 w-96 h-96 bg-red-600 rounded-full blur-3xl"></div>
+        <div className="absolute top-1/3 left-10 w-96 h-96 bg-pink-600 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-1/3 right-10 w-96 h-96 bg-pink-600 rounded-full blur-3xl"></div>
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -51,11 +51,11 @@ export default function WorkSection({ title = "Our Work", limit = 6 }) {
               transition={{ delay: 0.3, duration: 0.6 }}
               className="h-1 bg-gradient-to-r from-red-600 to-red-400 mx-auto mb-4"
             />
-            <span className="text-amber-600 font-semibold text-sm uppercase tracking-widest">Portfolio</span>
+            <span className="text-pink-600 font-semibold text-sm uppercase tracking-widest">Portfolio</span>
             <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-slate-800 mt-4 mb-4 leading-tight">
               {title.split(' ').map((word, i) => 
                 i === title.split(' ').length - 1 ? 
-                <span key={i} className="bg-gradient-to-r from-red-800 via-red-600 to-amber-500 bg-clip-text text-transparent font-black">{word}</span> : 
+                <span key={i} className="bg-gradient-to-r from-pink-600 via-pink-500 to-rose-500 bg-clip-text text-transparent font-black">{word}</span> : 
                 word + ' '
               )}
             </h2>

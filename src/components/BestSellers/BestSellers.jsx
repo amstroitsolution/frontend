@@ -50,7 +50,7 @@ export default function BestSellers() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-center py-12">
             <div className="text-center">
-              <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-red-600 mx-auto mb-4"></div>
+              <div className="animate-spin rounded-full h-12 w-12 border-b-2 mx-auto mb-4" style={{ borderColor: '#de3cad' }}></div>
               <p className="text-gray-600">Loading bestsellers...</p>
             </div>
           </div>
@@ -72,9 +72,9 @@ export default function BestSellers() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
         >
-          <div className="h-1 bg-gradient-to-r from-red-600 to-amber-600 w-20 mx-auto mb-4"></div>
+          <div className="h-1 w-20 mx-auto mb-4" style={{ background: 'linear-gradient(135deg, #de3cad, #e854c1)' }}></div>
           <h2 className="text-4xl md:text-5xl font-bold text-slate-800 mb-4">
-            Best <span className="bg-gradient-to-r from-red-600 to-amber-600 bg-clip-text text-transparent">Sellers</span>
+            Best <span className="bg-clip-text text-transparent" style={{ backgroundImage: 'linear-gradient(135deg, #de3cad, #e854c1)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>Sellers</span>
           </h2>
           <p className="text-lg text-gray-600">Most loved by our customers</p>
         </motion.div>

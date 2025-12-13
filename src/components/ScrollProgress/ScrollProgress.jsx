@@ -28,14 +28,14 @@ const ScrollProgress = () => {
     <>
       {/* Progress bar */}
       <motion.div
-        className="fixed top-0 left-0 right-0 h-1 bg-red-600 origin-left z-50"
+        className="fixed top-0 left-0 right-0 h-1 bg-pink-600 origin-left z-50"
         style={{ scaleX }}
       />
 
       {/* Scroll to top button */}
       <motion.button
         onClick={scrollToTop}
-        className="fixed bottom-8 right-8 w-14 h-14 bg-red-600 text-white rounded-full shadow-2xl flex items-center justify-center hover:bg-red-700 transition-colors z-50 group"
+        className="fixed bottom-8 right-8 w-14 h-14 bg-pink-600 text-white rounded-full shadow-2xl flex items-center justify-center hover:bg-pink-700 transition-colors z-50 group"
         initial={{ opacity: 0, scale: 0 }}
         animate={{ 
           opacity: isVisible ? 1 : 0,

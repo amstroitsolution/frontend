@@ -121,7 +121,7 @@ const ProductPage = ({
                                     whileHover={{ scale: 1.1 }}
                                     whileTap={{ scale: 0.9 }}
                                     onClick={() => handleInquiry(item)}
-                                    className="bg-gradient-to-r from-red-800 to-amber-600 text-white px-6 py-2 rounded-full font-semibold hover:from-red-900 hover:to-amber-700 transition-all shadow-lg flex items-center gap-2"
+                                    className="bg-gradient-to-r from-pink-600 to-rose-600 text-white px-6 py-2 rounded-full font-semibold hover:from-pink-700 hover:to-rose-700 transition-all shadow-lg flex items-center gap-2"
                                 >
                                     <FaEnvelope /> Inquire Now
                                 </motion.button>
@@ -152,7 +152,7 @@ const ProductPage = ({
                                 whileHover={{ scale: 1.05 }}
                                 whileTap={{ scale: 0.95 }}
                                 onClick={() => handleInquiry(item)}
-                                className="w-full mt-3 bg-gradient-to-r from-red-800 to-amber-600 text-white px-4 py-2 rounded-lg font-semibold hover:from-red-900 hover:to-amber-700 transition-all flex items-center justify-center space-x-2 shadow-md hover:shadow-lg"
+                                className="w-full mt-3 bg-gradient-to-r from-pink-600 to-rose-600 text-white px-4 py-2 rounded-lg font-semibold hover:from-pink-700 hover:to-rose-700 transition-all flex items-center justify-center space-x-2 shadow-md hover:shadow-lg"
                             >
                                 <FaEnvelope size={14} />
                                 <span>Inquire Now</span>
@@ -205,7 +205,7 @@ const ProductPage = ({
                                     setSelectedForView(null);
                                     handleInquiry(selectedForView);
                                 }}
-                                className="w-full bg-gradient-to-r from-red-800 to-amber-600 text-white px-5 py-2 rounded-full hover:from-red-900 hover:to-amber-700 transition-all font-semibold flex items-center justify-center gap-2"
+                                className="w-full bg-gradient-to-r from-pink-600 to-rose-600 text-white px-5 py-2 rounded-full hover:from-pink-700 hover:to-rose-700 transition-all font-semibold flex items-center justify-center gap-2"
                             >
                                 <FaEnvelope /> Inquire Now
                             </button>
