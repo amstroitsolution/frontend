@@ -25,19 +25,25 @@ const CollectionPage = ({
     try {
       setLoading(true);
       const apiBaseUrl = import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000';
-      const response = await fetch(
-        `${apiBaseUrl}/api/women-products?category=${encodeURIComponent(category)}&limit=12`
-      );
+      const url = `${apiBaseUrl}/api/women-products?category=${encodeURIComponent(category)}&limit=12`;
+      
+      console.log('🔍 Fetching products from:', url);
+      console.log('📦 Category:', category);
+      
+      const response = await fetch(url);
 
       if (!response.ok) {
         throw new Error("Failed to fetch products");
       }
 
       const data = await response.json();
-      setProducts(data.products || []);
+      console.log('✅ API Response:', data);
+      console.log('📊 Products count:', data.products?.length || data.length || 0);
+      
+      setProducts(data.products || data || []);
       setError(null);
     } catch (err) {
-      console.error("Error fetching products:", err);
+      console.error("❌ Error fetching products:", err);
       setError(err.message);
     } finally {
       setLoading(false);
@@ -176,7 +182,17 @@ const CollectionPage = ({
               >
                 <div className="relative w-full h-80 overflow-hidden">
                   <motion.img
-                    src={item.images?.[0] || item.image || "https://via.placeholder.com/400"}
+                    src={
+                      item.images?.[0]?.startsWith('http') 
+                        ? item.images[0]
+                        : item.images?.[0]
+                        ? `${import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000'}${item.images[0]}`
+                        : item.image?.startsWith('http')
+                        ? item.image
+                        : item.image
+                        ? `${import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000'}${item.image}`
+                        : "https://via.placeholder.com/400"
+                    }
                     alt={item.name || item.title}
                     className="w-full h-full object-cover transition-transform duration-700 ease-out hover:scale-105"
                   />
@@ -237,7 +253,17 @@ const CollectionPage = ({
             className="bg-white rounded-2xl shadow-2xl p-5 max-w-md w-full"
           >
             <img
-              src={selected.images?.[0] || selected.image || "https://via.placeholder.com/400"}
+              src={
+                selected.images?.[0]?.startsWith('http') 
+                  ? selected.images[0]
+                  : selected.images?.[0]
+                  ? `${import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000'}${selected.images[0]}`
+                  : selected.image?.startsWith('http')
+                  ? selected.image
+                  : selected.image
+                  ? `${import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000'}${selected.image}`
+                  : "https://via.placeholder.com/400"
+              }
               alt={selected.name || selected.title}
               className="rounded-2xl w-full h-72 object-cover mb-4"
             />

@@ -6,6 +6,7 @@ import { motion, AnimatePresence } from "framer-motion";
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState(null);
+  const [activeSubDropdown, setActiveSubDropdown] = useState(null);
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
@@ -200,7 +201,7 @@ export default function Navbar() {
                     animate={{ opacity: 1, y: 0, scale: 1 }}
                     exit={{ opacity: 0, y: -10, scale: 0.95 }}
                     transition={{ duration: 0.2 }}
-                    className="absolute left-0 mt-2 w-56 bg-white border border-pink-100 rounded-xl shadow-xl overflow-hidden"
+                    className="absolute left-0 mt-2 w-64 bg-white border border-pink-100 rounded-xl shadow-xl overflow-hidden max-h-[80vh] overflow-y-auto"
                   >
                     {item.dropdown.map((subItem, subIndex) => (
                       <motion.li
@@ -208,16 +209,53 @@ export default function Navbar() {
                         initial={{ opacity: 0, x: -10 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ delay: subIndex * 0.05 }}
+                        className="relative group"
+                        onMouseEnter={() => subItem.hasSubCategories && setActiveSubDropdown(subItem.slug)}
+                        onMouseLeave={() => setActiveSubDropdown(null)}
                       >
                         <Link
                           to={`${item.to}/${subItem.slug}`}
                           className="block px-4 py-2.5 hover:text-pink-600 transition-all duration-300 border-b border-pink-50 last:border-0 hover:bg-pink-50"
                         >
-                          <span className="flex items-center gap-2">
-                            <span className="w-1.5 h-1.5 rounded-full bg-pink-400 opacity-0 group-hover:opacity-100 transition-opacity" />
-                            {subItem.name}
+                          <span className="flex items-center justify-between gap-2">
+                            <span className="flex items-center gap-2">
+                              <span className="w-1.5 h-1.5 rounded-full bg-pink-400 opacity-0 group-hover:opacity-100 transition-opacity" />
+                              {subItem.name}
+                            </span>
+                            {subItem.hasSubCategories && subItem.subCategories && subItem.subCategories.length > 0 && (
+                              <FaChevronDown className="text-xs rotate-[-90deg]" />
+                            )}
                           </span>
                         </Link>
+
+                        {/* 3rd Level Dropdown */}
+                        {subItem.hasSubCategories && subItem.subCategories && subItem.subCategories.length > 0 && activeSubDropdown === subItem.slug && (
+                          <motion.ul
+                            initial={{ opacity: 0, x: -10 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            exit={{ opacity: 0, x: -10 }}
+                            className="absolute left-full top-0 ml-1 w-56 bg-white border border-pink-100 rounded-xl shadow-xl overflow-hidden max-h-[60vh] overflow-y-auto"
+                          >
+                            {subItem.subCategories.map((subCat, scIndex) => (
+                              <motion.li
+                                key={subCat.slug}
+                                initial={{ opacity: 0, x: -5 }}
+                                animate={{ opacity: 1, x: 0 }}
+                                transition={{ delay: scIndex * 0.03 }}
+                              >
+                                <Link
+                                  to={`${item.to}/${subItem.slug}/${subCat.slug}`}
+                                  className="block px-4 py-2 text-sm hover:text-pink-600 transition-all duration-300 border-b border-pink-50 last:border-0 hover:bg-pink-50"
+                                >
+                                  <div className="font-medium">{subCat.name}</div>
+                                  {subCat.description && (
+                                    <div className="text-xs text-gray-500 mt-0.5">{subCat.description}</div>
+                                  )}
+                                </Link>
+                              </motion.li>
+                            ))}
+                          </motion.ul>
+                        )}
                       </motion.li>
                     ))}
                   </motion.ul>

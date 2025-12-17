@@ -1,7 +1,7 @@
-// frontend/src/pages/SareeCollection.jsx
+// frontend/src/pages/galleryCollection.jsx
 import React, { useEffect, useState, useRef } from "react";
 
-export default function SareeCollection() {
+export default function galleryCollection() {
   const [galleries, setGalleries] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
@@ -12,7 +12,7 @@ export default function SareeCollection() {
 
   const API_BASE = import.meta.env.VITE_API_BASE_URL || "http://localhost:5000";
 
-  // Fetch Saree galleries
+  // Fetch gallery galleries
   useEffect(() => {
     let mounted = true;
     fetch(`${API_BASE}/api/gallery`)
@@ -76,7 +76,7 @@ export default function SareeCollection() {
   }, [selected, autoPlay]);
 
   if (loading)
-    return <div className="flex justify-center items-center min-h-[60vh] text-gray-600">Loading Saree collection...</div>;
+    return <div className="flex justify-center items-center min-h-[60vh] text-gray-600">Loading gallery collection...</div>;
   if (error)
     return <div className="flex justify-center items-center min-h-[60vh] text-red-600">{error}</div>;
 
@@ -86,10 +86,10 @@ export default function SareeCollection() {
       <div className="relative overflow-hidden">
         <div className="h-64 md:h-80 lg:h-96 flex items-center justify-center" style={{ background: 'linear-gradient(135deg, #de3cad, #e854c1)' }}>
           <div className="relative z-20 text-center px-4">
-            <h1 className="text-3xl md:text-5xl font-extrabold text-white drop-shadow-lg">Saree Collection</h1>
-            <p className="mt-2 text-white/90 max-w-2xl mx-auto">Explore our exclusive Saree collections. Click on any card to view details.</p>
+            <h1 className="text-3xl md:text-5xl font-extrabold text-white drop-shadow-lg">gallery Collection</h1>
+            <p className="mt-2 text-white/90 max-w-2xl mx-auto">Explore our exclusive gallery collections. Click on any card to view details.</p>
             <div className="mt-6 flex justify-center">
-              <button onClick={() => window.scrollTo({ top: 450, behavior: "smooth" })} className="px-4 py-2 bg-white/10 border border-white/20 text-white rounded-md hover:bg-white/20 transition">View Sarees</button>
+              <button onClick={() => window.scrollTo({ top: 450, behavior: "smooth" })} className="px-4 py-2 bg-white/10 border border-white/20 text-white rounded-md hover:bg-white/20 transition">View gallerys</button>
             </div>
           </div>
         </div>
@@ -105,7 +105,7 @@ export default function SareeCollection() {
       {/* Grid */}
       <div className="max-w-7xl mx-auto px-4 py-10">
         {galleries.length === 0 ? (
-          <div className="text-center text-gray-500">No Sarees found.</div>
+          <div className="text-center text-gray-500">No gallerys found.</div>
         ) : (
           <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
             {galleries.map((g) => (
@@ -122,7 +122,7 @@ export default function SareeCollection() {
                     <div className="w-full h-full bg-gray-100 flex items-center justify-center text-gray-400">No image</div>
                   )}
                   <div className="absolute left-4 bottom-4 bg-black/50 backdrop-blur rounded-md px-3 py-1 text-white text-sm">
-                    { (g.images || []).length } photos
+                    {(g.images || []).length} photos
                   </div>
                 </div>
 

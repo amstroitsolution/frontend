@@ -39,7 +39,14 @@ import WinterKurta from "./pages/Kurtas/WinterKurta";
 import PlusSizeKurta from "./pages/Kurtas/PlusSizeKurta";
 
 import Wedding from "./pages/Wedding/Wedding";
+import BridalLehengas from "./pages/Wedding/BridalLehengas";
+import SilkSarees from "./pages/Wedding/SilkSarees";
+import CottonSarees from "./pages/Wedding/CottonSarees";
+import DesignerSarees from "./pages/Wedding/DesignerSarees";
+import PartyWearLehengas from "./pages/Wedding/PartyWearLehengas";
+
 import About from "./pages/About/About";
+import Gallery from "./pages/Gallery/Gallery";
 import Contact from "./pages/Contact/Contact";
 
 // Components
@@ -184,7 +191,14 @@ export default function App() {
 
 
           <Route path="/wedding" element={<Wedding />} />
+          <Route path="/wedding/bridal-lehengas" element={<BridalLehengas />} />
+          <Route path="/wedding/silk-sarees" element={<SilkSarees />} />
+          <Route path="/wedding/cotton-sarees" element={<CottonSarees />} />
+          <Route path="/wedding/designer-sarees" element={<DesignerSarees />} />
+          <Route path="/wedding/party-wear-lehengas" element={<PartyWearLehengas />} />
+          
           <Route path="/about" element={<About />} />
+          <Route path="/gallery" element={<Gallery />} />
           <Route path="/contact" element={<Contact />} />
 
         </Routes>
