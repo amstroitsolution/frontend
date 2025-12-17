@@ -22,17 +22,14 @@ jobs:
         node-version: '20'
         
     - name: Install dependencies
-      working-directory: ./frontend
       run: npm install
       
     - name: Build frontend
-      working-directory: ./frontend
       env:
         VITE_API_BASE_URL: https://api.yashper.com
       run: npm run build
       
     - name: Create deployment archive
-      working-directory: ./frontend
       run: |
         cd dist
         tar -czf ../frontend-build.tar.gz .
@@ -46,7 +43,7 @@ jobs:
         username: ${{ secrets.VPS_USERNAME }}
         key: ${{ secrets.VPS_SSH_KEY }}
         port: ${{ secrets.VPS_PORT }}
-        source: "frontend/frontend-build.tar.gz"
+        source: "frontend-build.tar.gz"
         target: "/tmp/"
         strip_components: 1
         timeout: 30s
