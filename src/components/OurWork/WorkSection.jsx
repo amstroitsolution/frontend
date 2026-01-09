@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import axios from "axios";
 import WorkItem from "./WorkItem";
 
-const API = import.meta.env.VITE_API_BASE_URL || "http://localhost:5000";
+const API = (import.meta.env.VITE_API_BASE_URL || "https://api.yashper.com").replace(/\/$/, "");
 
 export default function WorkSection({ title = "Our Work", limit = 6 }) {
   const [works, setWorks] = useState([]);

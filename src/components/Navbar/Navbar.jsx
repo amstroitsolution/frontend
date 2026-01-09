@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FaBars, FaTimes, FaChevronDown } from "react-icons/fa";
 import { motion, AnimatePresence } from "framer-motion";
+import SearchBar from "../SearchBar/SearchBar";
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -39,7 +40,7 @@ export default function Navbar() {
   }, [location]);
 
   const [menuItems, setMenuItems] = useState([]);
-  const API = import.meta.env.VITE_API_BASE_URL || "http://localhost:5000";
+  const API = (import.meta.env.VITE_API_BASE_URL || "https://api.yashper.com").replace(/\/$/, "");
 
   // Fetch menu items from API
   useEffect(() => {
@@ -67,23 +68,26 @@ export default function Navbar() {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.5, ease: "easeOut" }}
-      className={`w-full sticky top-0 z-50 transition-all duration-300 ${
-        scrolled
+      className={`w-full sticky top-0 z-50 transition-all duration-300 ${scrolled
           ? "shadow-lg backdrop-blur-lg bg-white/95 py-1.5"
           : "shadow-md backdrop-blur-md bg-white/90 py-2"
-      } border-b border-pink-100`}
+        } border-b border-pink-100`}
     >
       <div className="flex justify-between items-center px-4 md:px-12">
         {/* LOGO SECTION */}
         <Link to="/" className="flex items-center gap-3 group flex-shrink-0">
           <img
-  src="/yashper.png"
-  alt="Yashper Logo"
-  className={`object-contain transition-all duration-300 hover:scale-125 transform scale-125 ${
-    scrolled ? "w-12 h-12 md:w-14 md:h-14" : "w-14 h-14 md:w-16 md:h-16"
-  }`}
+            src="/yashper.png"
+            alt="Yashper Logo"
+            className={`object-contain transition-all duration-300 hover:scale-125 transform scale-125 ${scrolled ? "w-12 h-12 md:w-14 md:h-14" : "w-14 h-14 md:w-16 md:h-16"
+              }`}
           />
         </Link>
+
+        {/* SEARCH BAR - Desktop */}
+        <div className="hidden md:block flex-1 max-w-md mx-6">
+          <SearchBar />
+        </div>
 
         {/* MOBILE TOGGLE - Center positioned on mobile */}
         <div className="md:hidden flex-1 flex justify-center">
@@ -99,7 +103,7 @@ export default function Navbar() {
                 damping: 30
               }}
             />
-            
+
             <motion.button
               className={`toggle-option-mobile ${currentCategory === 'women' ? 'active' : ''}`}
               onClick={() => handleToggle('women')}
@@ -108,7 +112,7 @@ export default function Navbar() {
             >
               Women
             </motion.button>
-            
+
             <motion.button
               className={`toggle-option-mobile ${currentCategory === 'kids' ? 'active' : ''}`}
               onClick={() => handleToggle('kids')}
@@ -135,7 +139,7 @@ export default function Navbar() {
                 damping: 30
               }}
             />
-            
+
             <motion.button
               className={`toggle-option-desktop ${currentCategory === 'women' ? 'active' : ''}`}
               onClick={() => handleToggle('women')}
@@ -144,7 +148,7 @@ export default function Navbar() {
             >
               Women
             </motion.button>
-            
+
             <motion.button
               className={`toggle-option-desktop ${currentCategory === 'kids' ? 'active' : ''}`}
               onClick={() => handleToggle('kids')}
@@ -170,19 +174,17 @@ export default function Navbar() {
             >
               <Link
                 to={item.to}
-                className={`py-2 px-1 relative flex items-center gap-1 transition-all duration-300 ${
-                  location.pathname === item.to
+                className={`py-2 px-1 relative flex items-center gap-1 transition-all duration-300 ${location.pathname === item.to
                     ? "text-pink-600 font-semibold"
                     : "hover:text-pink-600"
-                }`}
+                  }`}
               >
                 {item.label}
                 {/* only show chevron if dropdown exists and has items */}
                 {item.dropdown && item.dropdown.length > 0 && (
                   <FaChevronDown
-                    className={`text-xs transition-transform duration-300 ${
-                      activeDropdown === item.label ? "rotate-180" : ""
-                    }`}
+                    className={`text-xs transition-transform duration-300 ${activeDropdown === item.label ? "rotate-180" : ""
+                      }`}
                   />
                 )}
                 <motion.span
@@ -290,7 +292,10 @@ export default function Navbar() {
             transition={{ duration: 0.3 }}
             className="md:hidden overflow-hidden bg-white shadow-lg"
           >
-
+            {/* MOBILE SEARCH BAR */}
+            <div className="px-4 py-3 border-b border-pink-100">
+              <SearchBar />
+            </div>
 
             <ul className="flex flex-col font-medium text-gray-800">
               {menuItems.map((item, index) => (
@@ -302,11 +307,10 @@ export default function Navbar() {
                   className="border-b border-pink-100"
                 >
                   <div
-                    className={`flex justify-between items-center px-6 py-4 transition-all duration-300 cursor-pointer ${
-                      location.pathname === item.to
+                    className={`flex justify-between items-center px-6 py-4 transition-all duration-300 cursor-pointer ${location.pathname === item.to
                         ? "bg-pink-50 text-pink-600"
                         : "hover:bg-pink-50 hover:text-pink-600"
-                    }`}
+                      }`}
                     onClick={() =>
                       item.dropdown
                         ? setActiveDropdown(activeDropdown === item.label ? null : item.label)

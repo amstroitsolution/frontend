@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import { FaBaby, FaChild, FaUsers } from "react-icons/fa";
 
-const API = import.meta.env.VITE_API_BASE_URL || "http://localhost:5000";
+const API = (import.meta.env.VITE_API_BASE_URL || "https://api.yashper.com").replace(/\/$/, "");
 
 // Icon mapping helper
 const getIconComponent = (iconName) => {

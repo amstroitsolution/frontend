@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import ProductCard from "../ProductCard/ProductCard";
 
-const API = import.meta.env.VITE_API_BASE_URL || "http://localhost:5000";
+const API = (import.meta.env.VITE_API_BASE_URL || "https://api.yashper.com/").replace(/\/$/, "");
 
 const GownDressesSection = () => {
   const [featuredGowns, setFeaturedGowns] = useState([]);
@@ -13,12 +13,17 @@ const GownDressesSection = () => {
   useEffect(() => {
     const fetchGowns = async () => {
       try {
+        // Fetch all active women products and filter by "Gown and Dresses" category
         const response = await axios.get(`${API}/api/women-products/active`);
-        // Filter for gowns and dresses category
-        const gownsData = response.data.filter(product => 
-          product.category?.toLowerCase().includes('gown') || 
-          product.category?.toLowerCase().includes('dress')
+
+        // Filter for "Gown and Dresses" category (same as /dresses/gown-and-dresses page)
+        const gownsData = response.data.filter(product =>
+          product.category?.toLowerCase().includes('gown and dresses') ||
+          product.category?.toLowerCase().includes('gown') ||
+          product.subcategory?.toLowerCase().includes('gown and dresses') ||
+          product.subcategory?.toLowerCase().includes('gown')
         );
+
         setFeaturedGowns(gownsData.slice(0, 4));
       } catch (error) {
         console.error("Error fetching gowns:", error);

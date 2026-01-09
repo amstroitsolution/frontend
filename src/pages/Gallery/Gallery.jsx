@@ -10,7 +10,7 @@ export default function galleryCollection() {
   const [autoPlay, setAutoPlay] = useState(true);
   const autoRef = useRef(null);
 
-  const API_BASE = import.meta.env.VITE_API_BASE_URL || "http://localhost:5000";
+  const API_BASE = import.meta.env.VITE_API_BASE_URL || "https://api.yashper.com";
 
   // Fetch gallery galleries
   useEffect(() => {
@@ -113,7 +113,7 @@ export default function galleryCollection() {
                 <div className="relative w-full h-64">
                   {g.coverImage || (g.images && g.images[0]) ? (
                     <img
-                      src={(g.coverImage || g.images[0]).startsWith("http") ? (g.coverImage || g.images[0]) : `${API_BASE}${g.coverImage || g.images[0]}`}
+                      src={(g.coverImage || g.images[0]).startsWith("http") ? (g.coverImage || g.images[0]) : `${API_BASE.replace(/\/$/, '')}/${(g.coverImage || g.images[0]).replace(/^\//, '')}`}
                       alt={g.title}
                       loading="lazy"
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
@@ -158,7 +158,7 @@ export default function galleryCollection() {
                 {selected.images && selected.images.length > 0 ? (
                   <img
                     key={selected.images[imgIndex]}
-                    src={selected.images[imgIndex].startsWith("http") ? selected.images[imgIndex] : `${API_BASE}${selected.images[imgIndex]}`}
+                    src={selected.images[imgIndex].startsWith("http") ? selected.images[imgIndex] : `${API_BASE.replace(/\/$/, '')}/${selected.images[imgIndex].replace(/^\//, '')}`}
                     alt={`slide-${imgIndex}`}
                     loading="lazy"
                     className="max-h-[70vh] object-contain mx-auto transition-opacity duration-500 ease-out opacity-100"
@@ -180,7 +180,7 @@ export default function galleryCollection() {
                 <div className="p-3 bg-gray-50 flex gap-2 overflow-x-auto">
                   {selected.images.map((img, idx) => (
                     <button key={idx} onClick={() => { setImgIndex(idx); setAutoPlay(false); }} className={`w-20 h-16 rounded overflow-hidden flex-shrink-0 border ${idx === imgIndex ? "ring-2 ring-pink-500" : "border-gray-200"}`}>
-                      <img loading="lazy" src={img.startsWith("http") ? img : `${API_BASE}${img}`} alt={`thumb-${idx}`} className="w-full h-full object-cover" />
+                      <img loading="lazy" src={img.startsWith("http") ? img : `${API_BASE.replace(/\/$/, '')}/${img.replace(/^\//, '')}`} alt={`thumb-${idx}`} className="w-full h-full object-cover" />
                     </button>
                   ))}
                 </div>
@@ -190,7 +190,7 @@ export default function galleryCollection() {
                 <div className="text-sm text-gray-600">Image {imgIndex + 1} of {selected.images?.length || 0}</div>
                 <div className="flex items-center gap-2">
                   <button onClick={() => { setImgIndex(0); setAutoPlay(false); }} className="px-3 py-1 text-sm bg-gray-100 rounded">First</button>
-                  <a href={selected.images?.[imgIndex] ? (selected.images[imgIndex].startsWith("http") ? selected.images[imgIndex] : `${API_BASE}${selected.images[imgIndex]}`) : "#"} target="_blank" rel="noreferrer" className="px-3 py-1 text-sm bg-pink-600 text-white rounded">Open Original</a>
+                  <a href={selected.images?.[imgIndex] ? (selected.images[imgIndex].startsWith("http") ? selected.images[imgIndex] : `${API_BASE.replace(/\/$/, '')}/${selected.images[imgIndex].replace(/^\//, '')}`) : "#"} target="_blank" rel="noreferrer" className="px-3 py-1 text-sm bg-pink-600 text-white rounded">Open Original</a>
                 </div>
               </div>
             </div>

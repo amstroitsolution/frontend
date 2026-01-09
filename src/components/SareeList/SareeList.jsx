@@ -10,10 +10,11 @@ export default function SareeList() {
   const [selected, setSelected] = useState(null);
 
   const API_BASE =
-    import.meta.env.VITE_API_BASE_URL || "http://localhost:5000";
+    import.meta.env.VITE_API_BASE_URL || "https://api.yashper.com";
 
   useEffect(() => {
-    fetch(`${API_BASE}/api/equipment`)
+    // Fetch from the correct endpoint: /api/women-products
+    fetch(`${API_BASE}/api/women-products`)
       .then((res) => {
         if (!res.ok) throw new Error("Network response not ok");
         return res.json();
@@ -35,11 +36,22 @@ export default function SareeList() {
       </div>
     );
 
-  if (!items || items.length === 0)
-    return <div className="py-10 text-center text-gray-500">No sarees found.</div>;
+  // Filter based on category (case-insensitive check for both saree and Sarees)
+  const sareeItems = items.filter((i) =>
+    i.category && (
+      i.category.toLowerCase().includes("saree") || 
+      i.category.toLowerCase().includes("sarees")
+    )
+  );
+  const lehengaItems = items.filter((i) =>
+    i.category && (
+      i.category.toLowerCase().includes("lehenga") ||
+      i.category.toLowerCase().includes("lehengas")
+    )
+  );
 
-  const sareeItems = items.filter((i) => i.type === "saree");
-  const lehengaItems = items.filter((i) => i.type === "lehenga");
+  if (sareeItems.length === 0 && lehengaItems.length === 0)
+    return <div className="py-10 text-center text-gray-500">No sarees found.</div>;
 
   const renderGrid = (list) => (
     <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
@@ -58,9 +70,9 @@ export default function SareeList() {
               {it.images && it.images.length > 0 ? (
                 <img
                   src={
-                    it.images[0].startsWith("http")
+                    it.images[0].trim().startsWith("http")
                       ? it.images[0]
-                      : `${API_BASE}${it.images[0]}`
+                      : `${API_BASE.replace(/\/$/, '')}/${it.images[0].replace(/^\//, '')}`
                   }
                   alt={it.title}
                   className="w-full h-72 object-cover object-center group-hover:scale-110 transition-transform duration-700 ease-out"
@@ -77,8 +89,8 @@ export default function SareeList() {
               )}
 
               <div className="absolute top-3 right-3">
-                <span className="inline-flex items-center px-3 py-1.5 bg-gradient-to-r from-pink-600 to-rose-600 text-white text-xs font-semibold rounded-full capitalize shadow-lg group-hover:scale-110 transition-transform duration-300">
-                  {it.type === "saree" ? "Saree" : "Lehenga"}
+                <span className="inline-flex items-center px-3 py-1.5 bg-gradient-to-r from-pink-600 to-rose-600 text-white text-xs font-semibold rounded-full c/apitalize shadow-lg group-hover:scale-110 transition-transform duration-300">
+                  {it.category || "Fashion"}
                 </span>
               </div>
 
@@ -106,7 +118,7 @@ export default function SareeList() {
                 }}
               >
                 {it.description ||
-                  (it.type === "saree"
+                  (it.category && it.category.toLowerCase().includes("saree")
                     ? "Beautiful designer saree with premium fabric."
                     : "Premium lehenga with exquisite design.")}
               </p>
@@ -114,7 +126,7 @@ export default function SareeList() {
                 <div>
                   <p className="text-xs text-gray-500 mb-1">Starting from</p>
                   <span className="text-2xl font-bold bg-gradient-to-r from-pink-600 to-rose-600 bg-clip-text text-transparent">
-                    ₹{it.price?.toLocaleString() || 0}
+                    ₹{it.price ? it.price.toLocaleString() : "On Request"}
                   </span>
                 </div>
                 <button
@@ -200,14 +212,14 @@ export default function SareeList() {
 
 function DetailsModal({ item, onClose, apiBase }) {
   const [isInquiryOpen, setIsInquiryOpen] = useState(false);
-  
+
   if (!item) return null;
 
   const imageUrl =
     item.images && item.images.length > 0
-      ? item.images[0].startsWith("http")
+      ? item.images[0].trim().startsWith("http")
         ? item.images[0]
-        : `${apiBase}${item.images[0]}`
+        : `${apiBase.replace(/\/$/, '')}/${item.images[0].replace(/^\//, '')}`
       : null;
 
   const handleInquiry = () => {
@@ -247,7 +259,7 @@ function DetailsModal({ item, onClose, apiBase }) {
             <div className="flex flex-col gap-4">
               <p className="text-sm text-gray-600">{item.description || "No description available."}</p>
               <p className="text-lg font-semibold text-red-700">
-                ₹{item.price?.toLocaleString() || 0}
+                ₹{item.price ? item.price.toLocaleString() : "On Request"}
               </p>
               <div className="flex gap-3 mt-4">
                 <button
@@ -280,8 +292,8 @@ function DetailsModal({ item, onClose, apiBase }) {
           images: item.images,
           image: imageUrl,
           description: item.description,
-          category: item.type,
-          badge: item.type === 'saree' ? 'Saree' : 'Lehenga'
+          category: item.category,
+          badge: item.category && item.category.toLowerCase().includes('saree') ? 'Saree' : 'Lehenga'
         }}
         productType="Saree"
       />

@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import slide1 from "../../assets/images/slide1.webp";
 
-const API = import.meta.env.VITE_API_BASE_URL || "http://localhost:5000";
+const API = (import.meta.env.VITE_API_BASE_URL || "https://api.yashper.com/").replace(/\/$/, "");
 
 // Fallback slides if API fails
 const fallbackSlides = [
@@ -95,14 +95,14 @@ export default function Hero() {
 
   if (loading) {
     return (
-      <div className="relative w-full h-[300vh] sm:h-[350vh] md:h-[400vh] overflow-hidden bg-black flex items-center justify-center">
+      <div className="relative w-full h-[50vh] md:h-screen overflow-hidden bg-black flex items-center justify-center">
         <div className="text-white text-xl">Loading...</div>
       </div>
     );
   }
 
   return (
-    <div className="relative w-full h-[100vh] sm:h-[100vh] md:h-[100vh] overflow-hidden bg-black">
+    <div className="relative w-full h-[50vh] md:h-screen overflow-hidden bg-black">
       {/* Background Particles */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
         {[...Array(25)].map((_, i) => (
@@ -164,9 +164,9 @@ export default function Hero() {
               transition={{ delay: 0.3, duration: 0.8 }}
               className="max-w-3xl md:max-w-4xl"
             >
-              <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-6">
-                <div className="w-8 sm:w-12 h-0.5" style={{ background: '#de3cad' }}></div>
-                <span className="text-amber-400 text-xs sm:text-sm font-semibold uppercase tracking-widest">
+              <div className="flex items-center gap-1.5 sm:gap-3 mb-2 sm:mb-6">
+                <div className="w-6 sm:w-12 h-0.5" style={{ background: '#de3cad' }}></div>
+                <span className="text-amber-400 text-[10px] sm:text-sm font-semibold uppercase tracking-widest">
                   {slides[current].subtitle || "Welcome to Excellence"}
                 </span>
               </div>
@@ -175,7 +175,7 @@ export default function Hero() {
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.6, duration: 0.8 }}
-                className="text-white text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold mb-4 sm:mb-6 leading-snug sm:leading-tight"
+                className="text-white text-xl sm:text-4xl md:text-5xl lg:text-7xl font-bold mb-2 sm:mb-6 leading-tight sm:leading-tight"
               >
                 {slides[current].title}
               </motion.h1>
@@ -184,7 +184,7 @@ export default function Hero() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.8, duration: 0.6 }}
-                className="text-white/90 text-base sm:text-lg md:text-xl mb-6 sm:mb-10 max-w-2xl leading-relaxed"
+                className="text-white/90 text-xs sm:text-lg md:text-xl mb-3 sm:mb-10 max-w-2xl leading-relaxed"
               >
                 {slides[current].description || "Precision craftsmanship meets modern innovation in textile manufacturing"}
               </motion.p>
@@ -193,11 +193,11 @@ export default function Hero() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 1, duration: 0.6 }}
-                className="flex flex-wrap gap-3 sm:gap-4"
+                className="flex flex-wrap gap-2 sm:gap-4"
               >
                 <Link
                   to="/about"
-                  className="px-6 sm:px-8 py-3 sm:py-4 bg-white/10 text-white font-semibold rounded-lg border border-white/20 hover:bg-white/20 transition-all"
+                  className="px-4 sm:px-8 py-2 sm:py-4 text-sm sm:text-base bg-white/10 text-white font-semibold rounded-lg border border-white/20 hover:bg-white/20 transition-all"
                 >
                   Learn More →
                 </Link>
@@ -211,32 +211,32 @@ export default function Hero() {
       <motion.button
         onClick={prevSlide}
         whileHover={{ scale: 1.1, x: -5 }}
-        className="absolute left-4 sm:left-8 top-1/2 -translate-y-1/2 bg-white/10 text-white p-3 sm:p-4 rounded-xl border border-white/20 z-10 transition-all"
+        className="absolute left-2 sm:left-8 top-1/2 -translate-y-1/2 bg-white/10 text-white p-2 sm:p-4 rounded-lg sm:rounded-xl border border-white/20 z-10 transition-all"
         style={{ '&:hover': { background: '#de3cad' } }}
         onMouseEnter={(e) => e.currentTarget.style.background = '#de3cad'}
         onMouseLeave={(e) => e.currentTarget.style.background = 'rgba(255, 255, 255, 0.1)'}
       >
-        <FaChevronLeft size={16} className="sm:size-20" />
+        <FaChevronLeft size={14} className="sm:w-4 sm:h-4" />
       </motion.button>
       <motion.button
         onClick={nextSlide}
         whileHover={{ scale: 1.1, x: 5 }}
-        className="absolute right-4 sm:right-8 top-1/2 -translate-y-1/2 bg-white/10 text-white p-3 sm:p-4 rounded-xl border border-white/20 z-10 transition-all"
+        className="absolute right-2 sm:right-8 top-1/2 -translate-y-1/2 bg-white/10 text-white p-2 sm:p-4 rounded-lg sm:rounded-xl border border-white/20 z-10 transition-all"
         onMouseEnter={(e) => e.currentTarget.style.background = '#de3cad'}
         onMouseLeave={(e) => e.currentTarget.style.background = 'rgba(255, 255, 255, 0.1)'}
       >
-        <FaChevronRight size={16} />
+        <FaChevronRight size={14} className="sm:w-4 sm:h-4" />
       </motion.button>
 
       {/* Dots */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-2 sm:gap-3 z-10">
+      <div className="absolute bottom-4 sm:bottom-8 left-1/2 -translate-x-1/2 flex gap-1.5 sm:gap-3 z-10">
         {slides.map((_, index) => (
           <button
             key={index}
             onClick={() => setCurrent(index)}
             className={`rounded-full transition-all duration-500 ${index === current
-              ? "w-8 sm:w-12 h-2.5"
-              : "bg-white/40 w-2.5 h-2.5 hover:bg-white/60"
+              ? "w-6 sm:w-12 h-2"
+              : "bg-white/40 w-2 h-2 hover:bg-white/60"
               }`}
             style={index === current ? { background: '#de3cad' } : {}}
           />

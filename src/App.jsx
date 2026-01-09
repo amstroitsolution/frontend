@@ -4,6 +4,14 @@ import { Routes, Route, useLocation } from "react-router-dom";
 // Pages Import
 import Home from "./pages/Home/Home";
 import Kids from "./pages/Kids/Kids";
+import KidsProductDetail from "./pages/Kids/KidsProductDetail";
+import ProductDetail from "./pages/ProductDetail/ProductDetail";
+import WatchBuyDetail from "./pages/WatchBuy/WatchBuyDetail";
+import SpecialOfferDetail from "./pages/SpecialOffer/SpecialOfferDetail";
+import NewArrivalDetail from "./pages/NewArrival/NewArrivalDetail";
+import TrendingItemDetail from "./pages/TrendingItem/TrendingItemDetail";
+import SearchResults from "./pages/SearchResults/SearchResults";
+import SeoLandingPage from "./pages/Seo/SeoLandingPage";
 
 // Other pages
 import Dresses from "./pages/Dresses/Dresses";
@@ -107,8 +115,27 @@ export default function App() {
           {/* Woman / Home (default) */}
           <Route path="/" element={<Home />} />
 
+          {/* Search Results */}
+          <Route path="/search" element={<SearchResults />} />
+
+          {/* Product Detail - Universal for all women's products */}
+          <Route path="/product/:id" element={<ProductDetail />} />
+
+          {/* Watch & Buy Detail */}
+          <Route path="/watchbuy/:id" element={<WatchBuyDetail />} />
+
+          {/* Special Offer Detail */}
+          <Route path="/special-offer/:id" element={<SpecialOfferDetail />} />
+
+          {/* New Arrival Detail */}
+          <Route path="/new-arrival/:id" element={<NewArrivalDetail />} />
+
+          {/* Trending Item Detail */}
+          <Route path="/trending-item/:id" element={<TrendingItemDetail />} />
+
           {/* Kids */}
           <Route path="/kids" element={<Kids />} />
+          <Route path="/kids/product/:id" element={<KidsProductDetail />} />
 
           {/* Dresses */}
           <Route path="/dresses" element={<Dresses />} />
@@ -118,8 +145,8 @@ export default function App() {
 
           {/* Sets */}
           <Route path="/sets" element={<Sets />} />
-          <Route path="/sets/2pcs-kurta-sets" element={<TwoPcsKurtaSets />} />
-          <Route path="/sets/3pcs-kurta-sets" element={<ThreePcsKurtaSets />} />
+          <Route path="/sets/2-pcs-kurta-sets" element={<TwoPcsKurtaSets />} />
+          <Route path="/sets/3-pcs-kurta-sets" element={<ThreePcsKurtaSets />} />
           <Route path="/sets/anarkali-sets" element={<AnarkaliSets />} />
           <Route path="/sets/a-line-sets" element={<ALineSets />} />
           <Route path="/sets/straight-suit-sets" element={<StraightSuitSets />} />
@@ -129,9 +156,9 @@ export default function App() {
 
           {/* Bottoms */}
           <Route path="/bottoms" element={<Bottoms />} />
-          <Route path="/bottoms/trouser-pants" element={<TrouserPants />} />
-          <Route path="/bottoms/salwar-leggings" element={<SalwarLeggings />} />
-          <Route path="/bottoms/palazzos-culottes" element={<PalazzosCulottes />} />
+          <Route path="/bottoms/trouser-and-pants" element={<TrouserPants />} />
+          <Route path="/bottoms/salwar-and-leggings" element={<SalwarLeggings />} />
+          <Route path="/bottoms/palazzos-and-culottes" element={<PalazzosCulottes />} />
           <Route path="/bottoms/sharara" element={<Sharara />} />
           <Route path="/bottoms/skirts" element={<Skirts />} />
           <Route path="/bottoms/jeggings" element={<Jeggings />} />
@@ -196,10 +223,13 @@ export default function App() {
           <Route path="/wedding/cotton-sarees" element={<CottonSarees />} />
           <Route path="/wedding/designer-sarees" element={<DesignerSarees />} />
           <Route path="/wedding/party-wear-lehengas" element={<PartyWearLehengas />} />
-          
+
           <Route path="/about" element={<About />} />
           <Route path="/gallery" element={<Gallery />} />
           <Route path="/contact" element={<Contact />} />
+
+          {/* Gurgaon SEO Landing Pages */}
+          <Route path="/gurgaon/:slug" element={<SeoLandingPage />} />
 
         </Routes>
 

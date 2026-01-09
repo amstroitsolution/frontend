@@ -4,7 +4,7 @@ import { FaEnvelope } from "react-icons/fa";
 import axios from "axios";
 import InquiryForm from "../../components/InquiryForm/InquiryForm";
 
-const API = import.meta.env.VITE_API_BASE_URL || "http://localhost:5000";
+const API = (import.meta.env.VITE_API_BASE_URL || "https://api.yashper.com").replace(/\/$/, "");
 
 const InstaSarees = () => {
   const [selectedProduct, setSelectedProduct] = useState(null);
@@ -19,11 +19,30 @@ const InstaSarees = () => {
   const fetchSarees = async () => {
     try {
       setLoading(true);
-      const res = await axios.get(`${API}/api/women-products?category=Insta Sarees`);
-      const products = res.data;
+      // Try actual saree categories from database
+      const possibleCategories = [
+        'Wedding → Silk Sarees',
+        'Wedding → Designer Sarees',
+        'Wedding → Cotton Sarees'
+      ];
       
-      // If no products, use fallback data
-      if (products.length === 0) {
+      let allProducts = [];
+      for (const category of possibleCategories) {
+        try {
+          const res = await axios.get(`${API}/api/women-products?category=${encodeURIComponent(category)}`);
+          if (res.data && res.data.length > 0) {
+            allProducts = [...allProducts, ...res.data];
+          }
+        } catch (err) {
+          console.log(`No products found for category: ${category}`);
+        }
+      }
+      
+      // If we found products, use them
+      if (allProducts.length > 0) {
+        setSarees(allProducts);
+      } else {
+        // Use fallback data if no products found
         setSarees([
           {
             _id: "1",
@@ -74,8 +93,6 @@ const InstaSarees = () => {
             category: "Insta Sarees"
           },
         ]);
-      } else {
-        setSarees(products);
       }
     } catch (err) {
       console.error("Error fetching sarees:", err);
@@ -89,6 +106,22 @@ const InstaSarees = () => {
           description: "Soft pink silk with delicate zari border — a timeless Insta favourite.",
           category: "Insta Sarees"
         },
+        {
+          _id: "2",
+          title: "Royal Banarasi Gold ✨",
+          price: 5499,
+          images: ["https://wforwoman.com/cdn/shop/files/23AUS11464-122670_1_600x.jpg?v=1721317029"],
+          description: "Handwoven Banarasi saree dipped in golden grace.",
+          category: "Insta Sarees"
+        },
+        {
+          _id: "3",
+          title: "Midnight Blue Charm 💙",
+          price: 3999,
+          images: ["https://wforwoman.com/cdn/shop/files/22AUSP11227-117751_1_600x.jpg?v=1721318138"],
+          description: "A luxe satin saree for your evening glow-ups.",
+          category: "Insta Sarees"
+        }
       ]);
     } finally {
       setLoading(false);

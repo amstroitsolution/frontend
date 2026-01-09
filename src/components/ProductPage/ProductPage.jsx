@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { FaEnvelope, FaEye } from "react-icons/fa";
 import axios from "axios";
 import InquiryForm from "../InquiryForm/InquiryForm";
 
-const API = import.meta.env.VITE_API_BASE_URL || "http://localhost:5000";
+const API = (import.meta.env.VITE_API_BASE_URL || "https://api.yashper.com").replace(/\/$/, "");
 
 const ProductPage = ({
     category,
@@ -13,11 +14,11 @@ const ProductPage = ({
     productType = "WomenProduct",
     apiEndpoint = "/api/women-products/active"
 }) => {
+    const navigate = useNavigate();
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(true);
     const [selectedProduct, setSelectedProduct] = useState(null);
     const [isInquiryOpen, setIsInquiryOpen] = useState(false);
-    const [selectedForView, setSelectedForView] = useState(null);
 
     useEffect(() => {
         const fetchProducts = async () => {
@@ -120,18 +121,18 @@ const ProductPage = ({
                                 <motion.button
                                     whileHover={{ scale: 1.1 }}
                                     whileTap={{ scale: 0.9 }}
-                                    onClick={() => handleInquiry(item)}
-                                    className="bg-gradient-to-r from-pink-600 to-rose-600 text-white px-6 py-2 rounded-full font-semibold hover:from-pink-700 hover:to-rose-700 transition-all shadow-lg flex items-center gap-2"
+                                    onClick={() => navigate(`/product/${item._id}`)}
+                                    className="bg-white text-pink-700 px-4 py-2 rounded-full font-medium hover:bg-pink-100 transition-all flex items-center gap-2"
                                 >
-                                    <FaEnvelope /> Inquire Now
+                                    <FaEye /> View Details
                                 </motion.button>
                                 <motion.button
                                     whileHover={{ scale: 1.1 }}
                                     whileTap={{ scale: 0.9 }}
-                                    onClick={() => setSelectedForView(item)}
-                                    className="bg-white text-pink-700 px-4 py-2 rounded-full font-medium hover:bg-pink-100 transition-all flex items-center gap-2"
+                                    onClick={() => handleInquiry(item)}
+                                    className="bg-gradient-to-r from-pink-600 to-rose-600 text-white px-6 py-2 rounded-full font-semibold hover:from-pink-700 hover:to-rose-700 transition-all shadow-lg flex items-center gap-2"
                                 >
-                                    <FaEye /> View Details
+                                    <FaEnvelope /> Inquire Now
                                 </motion.button>
                             </div>
                         </div>
@@ -161,64 +162,6 @@ const ProductPage = ({
                     </motion.div>
                 ))}
             </div>
-
-            {/* View Details Modal */}
-            {selectedForView && (
-                <div
-                    className="fixed inset-0 bg-black/70 backdrop-blur-sm flex justify-center items-center z-50 p-4"
-                    onClick={() => setSelectedForView(null)}
-                >
-                    <motion.div
-                        onClick={(e) => e.stopPropagation()}
-                        initial={{ scale: 0.9, opacity: 0 }}
-                        animate={{ scale: 1, opacity: 1 }}
-                        className="bg-white rounded-3xl shadow-2xl p-6 max-w-md w-full max-h-[90vh] overflow-y-auto"
-                    >
-                        <img
-                            src={
-                                selectedForView.images && selectedForView.images.length > 0
-                                    ? selectedForView.images[0].startsWith("http")
-                                        ? selectedForView.images[0]
-                                        : `${API}${selectedForView.images[0]}`
-                                    : "https://via.placeholder.com/400"
-                            }
-                            alt={selectedForView.title}
-                            className="rounded-2xl w-full h-80 object-cover mb-4"
-                        />
-                        <h3 className="text-2xl font-semibold text-pink-700 mb-2 text-center">
-                            {selectedForView.title}
-                        </h3>
-                        <p className="text-pink-600 font-bold text-xl mb-2 text-center">
-                            ₹{selectedForView.price}
-                        </p>
-                        <p className="text-gray-600 mb-4 text-center">
-                            {selectedForView.description || selectedForView.subtitle}
-                        </p>
-                        {selectedForView.category && (
-                            <p className="text-sm text-gray-500 mb-4 text-center">
-                                Category: {selectedForView.category}
-                            </p>
-                        )}
-                        <div className="flex flex-col gap-3">
-                            <button
-                                onClick={() => {
-                                    setSelectedForView(null);
-                                    handleInquiry(selectedForView);
-                                }}
-                                className="w-full bg-gradient-to-r from-pink-600 to-rose-600 text-white px-5 py-2 rounded-full hover:from-pink-700 hover:to-rose-700 transition-all font-semibold flex items-center justify-center gap-2"
-                            >
-                                <FaEnvelope /> Inquire Now
-                            </button>
-                            <button
-                                onClick={() => setSelectedForView(null)}
-                                className="bg-pink-600 text-white px-5 py-2 rounded-full hover:bg-pink-700 transition"
-                            >
-                                Close
-                            </button>
-                        </div>
-                    </motion.div>
-                </div>
-            )}
 
             {/* Inquiry Form Modal */}
             {selectedProduct && (

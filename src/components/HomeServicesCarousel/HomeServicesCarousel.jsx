@@ -8,8 +8,7 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 
-const API_BASE = import.meta.env.VITE_API_BASE_URL || "http://localhost:5000";
-const API = `${API_BASE}/api/home-services`;
+const API_BASE = import.meta.env.VITE_API_BASE_URL || "https://api.yashper.com";
 
 export default function HomeServicesCarousel() {
   const [items, setItems] = useState([]);
@@ -19,7 +18,7 @@ export default function HomeServicesCarousel() {
     const fetchItems = async () => {
       try {
         setLoading(true);
-        const res = await axios.get(API);
+        const res = await axios.get(`${API_BASE}/api/services`);
         const arr = Array.isArray(res.data) ? res.data : [];
         setItems(arr);
       } catch (err) {

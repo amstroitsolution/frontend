@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { FaArrowRight } from "react-icons/fa";
 import axios from "axios";
 
-const API = import.meta.env.VITE_API_BASE_URL || "http://localhost:5000";
+const API = (import.meta.env.VITE_API_BASE_URL || "https://api.yashper.com").replace(/\/$/, "");
 
 export default function ShopByCategory() {
   const [categories, setCategories] = useState([]);

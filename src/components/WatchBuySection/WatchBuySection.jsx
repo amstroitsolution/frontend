@@ -1,11 +1,13 @@
 import React, { useEffect, useRef, useState } from "react";
-import { FaChevronLeft, FaChevronRight, FaEnvelope } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
+import { FaChevronLeft, FaChevronRight, FaEnvelope, FaEye } from "react-icons/fa";
 import axios from "axios";
 import InquiryForm from "../InquiryForm/InquiryForm";
 
-const API = import.meta.env.VITE_API_BASE_URL || "http://localhost:5000";
+const API = (import.meta.env.VITE_API_BASE_URL || "https://api.yashper.com").replace(/\/$/, "");
 
 const WatchBuySection = () => {
+  const navigate = useNavigate();
   const scrollRef = useRef(null);
   const [hovered, setHovered] = useState(null);
   const [isManualScroll, setIsManualScroll] = useState(false);
@@ -223,17 +225,29 @@ const WatchBuySection = () => {
                 <div className={`absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center transition-opacity duration-300 ${
                   hovered === item._id ? 'opacity-100' : 'opacity-0'
                 }`}>
-                  <button
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      handleInquiry(item);
-                    }}
-                    style={{ background: 'linear-gradient(135deg, #de3cad, #e854c1)' }}
-                    className="text-white px-6 py-3 rounded-full font-semibold transition-all duration-300 flex items-center space-x-2 shadow-lg hover:shadow-xl transform hover:scale-105 hover:opacity-90"
-                  >
-                    <FaEnvelope size={16} />
-                    <span>Inquire Now</span>
-                  </button>
+                  <div className="flex flex-col gap-3">
+                    <button
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        navigate(`/watchbuy/${item._id}`);
+                      }}
+                      className="bg-white text-pink-600 px-6 py-3 rounded-full font-semibold transition-all duration-300 flex items-center space-x-2 shadow-lg hover:shadow-xl transform hover:scale-105"
+                    >
+                      <FaEye size={16} />
+                      <span>View Details</span>
+                    </button>
+                    <button
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        handleInquiry(item);
+                      }}
+                      style={{ background: 'linear-gradient(135deg, #de3cad, #e854c1)' }}
+                      className="text-white px-6 py-3 rounded-full font-semibold transition-all duration-300 flex items-center space-x-2 shadow-lg hover:shadow-xl transform hover:scale-105 hover:opacity-90"
+                    >
+                      <FaEnvelope size={16} />
+                      <span>Inquire Now</span>
+                    </button>
+                  </div>
                 </div>
 
                 <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent text-white p-4">

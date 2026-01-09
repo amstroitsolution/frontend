@@ -48,12 +48,12 @@ const Footer = () => {
             <span className="hidden md:inline">•</span>
             <span>All rights reserved.</span>
           </div>
-          
+
           <div className="flex items-center gap-2 text-sm">
             <span className="text-gray-500">Development and Designing by</span>
-            <a 
-              href="https://mawebtechnologies.com/" 
-              target="_blank" 
+            <a
+              href="https://mawebtechnologies.com/"
+              target="_blank"
               rel="noopener noreferrer"
               className="text-pink-600 hover:text-pink-700 transition-all duration-300 font-semibold hover:underline decoration-pink-300"
             >

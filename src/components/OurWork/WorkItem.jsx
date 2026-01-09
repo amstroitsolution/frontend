@@ -2,7 +2,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 
-const API = import.meta.env.VITE_API_BASE_URL || "http://localhost:5000";
+const API = (import.meta.env.VITE_API_BASE_URL || "https://api.yashper.com").replace(/\/$/, "");
 
 export default function WorkItem({ work }) {
   const firstImage = work.images && work.images.length > 0 ? work.images[0] : null;

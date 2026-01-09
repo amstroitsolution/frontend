@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { FaEye, FaEnvelope } from "react-icons/fa";
 import InquiryForm from "../InquiryForm/InquiryForm";
@@ -10,6 +11,7 @@ const CollectionPage = ({
   heroImage,
   badge = "COLLECTION"
 }) => {
+  const navigate = useNavigate();
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -24,7 +26,7 @@ const CollectionPage = ({
   const fetchProducts = async () => {
     try {
       setLoading(true);
-      const apiBaseUrl = import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000';
+      const apiBaseUrl = import.meta.env.VITE_API_BASE_URL || 'https://api.yashper.com';
       const url = `${apiBaseUrl}/api/women-products?category=${encodeURIComponent(category)}&limit=12`;
       
       console.log('🔍 Fetching products from:', url);
@@ -186,11 +188,11 @@ const CollectionPage = ({
                       item.images?.[0]?.startsWith('http') 
                         ? item.images[0]
                         : item.images?.[0]
-                        ? `${import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000'}${item.images[0]}`
+                        ? `${import.meta.env.VITE_API_BASE_URL || 'https://api.yashper.com'}${item.images[0]}`
                         : item.image?.startsWith('http')
                         ? item.image
                         : item.image
-                        ? `${import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000'}${item.image}`
+                        ? `${import.meta.env.VITE_API_BASE_URL || 'https://api.yashper.com'}${item.image}`
                         : "https://via.placeholder.com/400"
                     }
                     alt={item.name || item.title}
@@ -219,16 +221,16 @@ const CollectionPage = ({
                     )}
                     <div className="flex flex-col gap-2">
                       <button
-                        onClick={() => handleInquiry(item)}
+                        onClick={() => navigate(`/product/${item._id}`)}
                         className="bg-gradient-to-r from-pink-600 to-rose-600 text-white px-4 py-2 rounded-full text-sm flex items-center gap-2 mx-auto hover:from-pink-700 hover:to-rose-700 transition-all font-semibold"
                       >
-                        <FaEnvelope /> Inquire Now
+                        <FaEye /> View Details
                       </button>
                       <button
-                        onClick={() => setSelected(item)}
+                        onClick={() => handleInquiry(item)}
                         className="bg-pink-600 text-white px-4 py-1.5 rounded-full text-sm flex items-center gap-2 mx-auto hover:bg-pink-700 transition"
                       >
-                        <FaEye /> View Details
+                        <FaEnvelope /> Inquire Now
                       </button>
                     </div>
                   </div>
@@ -257,11 +259,11 @@ const CollectionPage = ({
                 selected.images?.[0]?.startsWith('http') 
                   ? selected.images[0]
                   : selected.images?.[0]
-                  ? `${import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000'}${selected.images[0]}`
+                  ? `${import.meta.env.VITE_API_BASE_URL || 'https://api.yashper.com'}${selected.images[0]}`
                   : selected.image?.startsWith('http')
                   ? selected.image
                   : selected.image
-                  ? `${import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000'}${selected.image}`
+                  ? `${import.meta.env.VITE_API_BASE_URL || 'https://api.yashper.com'}${selected.image}`
                   : "https://via.placeholder.com/400"
               }
               alt={selected.name || selected.title}

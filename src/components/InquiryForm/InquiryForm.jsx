@@ -43,7 +43,7 @@ const InquiryForm = ({ isOpen, onClose, product, productType }) => {
         ...formData
       };
 
-      const response = await fetch(`${import.meta.env.VITE_API_BASE_URL || "http://localhost:5000"}/api/inquiries`, {
+      const response = await fetch(`${import.meta.env.VITE_API_BASE_URL || "https://api.yashper.com/"}/api/inquiries`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -114,7 +114,7 @@ const InquiryForm = ({ isOpen, onClose, product, productType }) => {
               <div className="flex items-center space-x-4">
                 {product.images && product.images[0] && (
                   <img
-                    src={`${import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000'}${product.images[0]}`}
+                    src={`${import.meta.env.VITE_API_BASE_URL || 'https://api.yashper.com/'}${product.images[0]}`}
                     alt={product.title || product.name}
                     className="w-16 h-16 object-cover rounded-lg"
                   />

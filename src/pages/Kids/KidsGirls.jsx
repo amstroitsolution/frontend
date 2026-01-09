@@ -5,7 +5,7 @@ import { FaStar, FaHeart, FaCrown, FaEnvelope } from "react-icons/fa";
 import axios from "axios";
 import InquiryForm from "../../components/InquiryForm/InquiryForm";
 
-const API = import.meta.env.VITE_API_BASE_URL || "http://localhost:5000";
+const API = (import.meta.env.VITE_API_BASE_URL || "https://api.yashper.com").replace(/\/$/, "");
 
 export default function KidsGirls() {
   const [products, setProducts] = useState([]);

@@ -1,11 +1,12 @@
 // src/components/KidsProduct.jsx
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { FaEnvelope, FaEye } from "react-icons/fa";
 import axios from "axios";
 import InquiryForm from "../InquiryForm/InquiryForm";
 
-const API = import.meta.env.VITE_API_BASE_URL || "http://localhost:5000";
+const API = (import.meta.env.VITE_API_BASE_URL || "https://api.yashper.com/").replace(/\/$/, "");
 
 const KidsProduct = () => {
   const [products, setProducts] = useState([]);
@@ -82,15 +83,16 @@ const KidsProduct = () => {
               {/* Hover Overlay */}
               <div className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                 <div className="flex gap-3">
-                  <motion.button
-                    whileHover={{ scale: 1.1 }}
-                    whileTap={{ scale: 0.9 }}
-                    onClick={() => handleViewDetails(item)}
-                    className="bg-white text-slate-800 p-3 rounded-full shadow-lg hover:bg-gray-100 transition-all"
-                    title="View Product Details"
-                  >
-                    <FaEye size={16} />
-                  </motion.button>
+                  <Link to={`/kids/product/${item._id}`}>
+                    <motion.button
+                      whileHover={{ scale: 1.1 }}
+                      whileTap={{ scale: 0.9 }}
+                      className="bg-white text-slate-800 p-3 rounded-full shadow-lg hover:bg-gray-100 transition-all"
+                      title="View Product Details"
+                    >
+                      <FaEye size={16} />
+                    </motion.button>
+                  </Link>
                   <motion.button
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.9 }}
@@ -117,15 +119,16 @@ const KidsProduct = () => {
                 )}
               </div>
               <div className="flex gap-2">
-                <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  onClick={() => handleViewDetails(item)}
-                  className="flex-1 bg-white border-2 border-slate-300 text-slate-700 px-3 py-2 rounded-lg font-semibold hover:bg-slate-50 hover:border-slate-400 transition-all flex items-center justify-center space-x-1"
-                >
-                  <FaEye size={12} />
-                  <span>Details</span>
-                </motion.button>
+                <Link to={`/kids/product/${item._id}`} className="flex-1">
+                  <motion.button
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="w-full bg-white border-2 border-slate-300 text-slate-700 px-3 py-2 rounded-lg font-semibold hover:bg-slate-50 hover:border-slate-400 transition-all flex items-center justify-center space-x-1"
+                  >
+                    <FaEye size={12} />
+                    <span>Details</span>
+                  </motion.button>
+                </Link>
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}

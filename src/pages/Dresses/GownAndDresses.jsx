@@ -4,7 +4,7 @@ import ProductPage from "../../components/ProductPage/ProductPage";
 const GownAndDresses = () => {
   return (
     <ProductPage
-      category="Gown & Dresses"
+      category="Gown and Dresses"
       title="Gowns & Dresses Collection"
       description="Where every fold of fabric tells your story of confidence & beauty. Discover stunning gowns and dresses that blend comfort, luxury, and artistry."
       productType="GownDress"
