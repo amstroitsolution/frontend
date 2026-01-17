@@ -22,11 +22,11 @@ export default function BestSellers() {
           console.log("Fetching from women-products instead...");
           response = await axios.get(`${API}/api/women-products?limit=8&sort=-createdAt`);
         }
-        
+
         // Map the data to include image field for compatibility
         const mappedProducts = response.data.map(product => ({
           ...product,
-          image: product.images && product.images.length > 0 
+          image: product.images && product.images.length > 0
             ? (product.images[0].startsWith('http') ? product.images[0] : `${API}${product.images[0]}`)
             : "https://images.unsplash.com/photo-1583391733956-6c78276477e2?w=400&h=500&fit=crop",
           badge: product.badge || 'BESTSELLER'
@@ -79,7 +79,7 @@ export default function BestSellers() {
           <p className="text-lg text-gray-600">Most loved by our customers</p>
         </motion.div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {products.map((product, idx) => (
             <ProductCard
               key={product._id}

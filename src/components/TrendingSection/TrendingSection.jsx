@@ -56,8 +56,8 @@ export default function TrendingSection() {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {items.slice(0, 8).map((item, idx) => (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {items.slice(0, 9).map((item, idx) => (
             <ProductCard
               key={item._id}
               product={item}

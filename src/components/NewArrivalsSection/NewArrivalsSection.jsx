@@ -64,16 +64,7 @@ export default function NewArrivalsSection() {
         </motion.div>
 
         {/* FINAL FIXED RESPONSIVE GRID */}
-        <div className="
-            grid
-            grid-cols-2
-            xs:grid-cols-2
-            sm:grid-cols-3
-            md:grid-cols-3
-            lg:grid-cols-4
-            xl:grid-cols-5
-            gap-3 sm:gap-4 md:gap-5
-        ">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {items.slice(0, 6).map((item, idx) => (
             <ProductCard
               key={item._id}
@@ -81,7 +72,6 @@ export default function NewArrivalsSection() {
               productType="NewArrival"
               badgeText={item.badge}
               index={idx}
-              className="h-full"
             />
           ))}
         </div>

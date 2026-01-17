@@ -39,7 +39,7 @@ export default function SareeList() {
   // Filter based on category (case-insensitive check for both saree and Sarees)
   const sareeItems = items.filter((i) =>
     i.category && (
-      i.category.toLowerCase().includes("saree") || 
+      i.category.toLowerCase().includes("saree") ||
       i.category.toLowerCase().includes("sarees")
     )
   );
@@ -75,10 +75,10 @@ export default function SareeList() {
                       : `${API_BASE.replace(/\/$/, '')}/${it.images[0].replace(/^\//, '')}`
                   }
                   alt={it.title}
-                  className="w-full h-72 object-cover object-center group-hover:scale-110 transition-transform duration-700 ease-out"
+                  className="w-full h-96 object-cover object-center group-hover:scale-110 transition-transform duration-700 ease-out"
                 />
               ) : (
-                <div className="w-full h-72 bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center text-gray-400">
+                <div className="w-full h-96 bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center text-gray-400">
                   <div className="text-center">
                     <div className="w-16 h-16 mx-auto mb-2 bg-gray-300 rounded-full flex items-center justify-center">
                       <span className="text-2xl">📷</span>

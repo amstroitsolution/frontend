@@ -1,8 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
-import { FaEye, FaEnvelope } from "react-icons/fa";
-import InquiryForm from "../InquiryForm/InquiryForm";
+import ProductCard from "../ProductCard/ProductCard";
 
 const CollectionPage = ({
   category,
@@ -15,9 +14,6 @@ const CollectionPage = ({
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [selected, setSelected] = useState(null);
-  const [selectedProduct, setSelectedProduct] = useState(null);
-  const [isInquiryOpen, setIsInquiryOpen] = useState(false);
 
   useEffect(() => {
     fetchProducts();
@@ -27,7 +23,7 @@ const CollectionPage = ({
     try {
       setLoading(true);
       const apiBaseUrl = import.meta.env.VITE_API_BASE_URL || 'https://api.yashper.com';
-      const url = `${apiBaseUrl}/api/women-products?category=${encodeURIComponent(category)}`;
+      const url = `${apiBaseUrl}/api/women-products?category=${encodeURIComponent(category)}&t=${Date.now()}`;
 
       console.log('🔍 Fetching products from:', url);
       console.log('📦 Category:', category);
@@ -52,10 +48,7 @@ const CollectionPage = ({
     }
   };
 
-  const handleInquiry = (product) => {
-    setSelectedProduct(product);
-    setIsInquiryOpen(true);
-  };
+
 
   if (loading) {
     return (
@@ -167,153 +160,19 @@ const CollectionPage = ({
             <p className="text-gray-500 text-sm mt-2">Check back soon for new arrivals!</p>
           </div>
         ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
             {products.map((item, index) => (
-              <motion.div
+              <ProductCard
                 key={item._id || index}
-                whileHover={{
-                  scale: 1.03,
-                  y: -8,
-                  boxShadow: "0px 20px 40px rgba(0,0,0,0.15)",
-                }}
-                transition={{
-                  duration: 0.4,
-                  ease: "easeOut",
-                }}
-                className="rounded-3xl overflow-hidden bg-white shadow-md hover:shadow-2xl transition-all duration-500 flex flex-col cursor-pointer"
-              >
-                <div className="relative w-full h-80 overflow-hidden">
-                  <motion.img
-                    src={
-                      item.images?.[0]?.startsWith('http')
-                        ? item.images[0]
-                        : item.images?.[0]
-                          ? `${import.meta.env.VITE_API_BASE_URL || 'https://api.yashper.com'}${item.images[0]}`
-                          : item.image?.startsWith('http')
-                            ? item.image
-                            : item.image
-                              ? `${import.meta.env.VITE_API_BASE_URL || 'https://api.yashper.com'}${item.image}`
-                              : "https://via.placeholder.com/400"
-                    }
-                    alt={item.name || item.title}
-                    className="w-full h-full object-cover transition-transform duration-700 ease-out hover:scale-105"
-                  />
-                  {item.badge && (
-                    <span className="absolute top-3 left-3 bg-pink-600 text-white text-xs px-3 py-1 rounded-full font-semibold">
-                      {item.badge}
-                    </span>
-                  )}
-                </div>
-                <div className="p-4 text-center flex-1 flex flex-col justify-between">
-                  <div>
-                    <h3 className="text-lg font-semibold text-gray-800 mb-1">
-                      {item.name || item.title}
-                    </h3>
-                    <p className="text-gray-600 text-sm mb-3 line-clamp-2">
-                      {item.description}
-                    </p>
-                  </div>
-                  <div>
-                    {item.price && (
-                      <p className="text-pink-600 font-bold text-lg mb-3">
-                        ₹{item.price.toLocaleString()}
-                      </p>
-                    )}
-                    <div className="flex flex-col gap-2">
-                      <button
-                        onClick={() => navigate(`/product/${item._id}`)}
-                        className="bg-gradient-to-r from-pink-600 to-rose-600 text-white px-4 py-2 rounded-full text-sm flex items-center gap-2 mx-auto hover:from-pink-700 hover:to-rose-700 transition-all font-semibold"
-                      >
-                        <FaEye /> View Details
-                      </button>
-                      <button
-                        onClick={() => handleInquiry(item)}
-                        className="bg-pink-600 text-white px-4 py-1.5 rounded-full text-sm flex items-center gap-2 mx-auto hover:bg-pink-700 transition"
-                      >
-                        <FaEnvelope /> Inquire Now
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </motion.div>
+                product={item}
+                productType="WomenProduct"
+                index={index}
+              />
             ))}
           </div>
         )}
       </section>
 
-      {/* Modal */}
-      {selected && (
-        <div
-          className="fixed inset-0 bg-black/70 backdrop-blur-sm flex justify-center items-center z-50 p-4"
-          onClick={() => setSelected(null)}
-        >
-          <motion.div
-            onClick={(e) => e.stopPropagation()}
-            initial={{ scale: 0.9, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            transition={{ duration: 0.4, ease: "easeOut" }}
-            className="bg-white rounded-2xl shadow-2xl p-5 max-w-md w-full"
-          >
-            <img
-              src={
-                selected.images?.[0]?.startsWith('http')
-                  ? selected.images[0]
-                  : selected.images?.[0]
-                    ? `${import.meta.env.VITE_API_BASE_URL || 'https://api.yashper.com'}${selected.images[0]}`
-                    : selected.image?.startsWith('http')
-                      ? selected.image
-                      : selected.image
-                        ? `${import.meta.env.VITE_API_BASE_URL || 'https://api.yashper.com'}${selected.image}`
-                        : "https://via.placeholder.com/400"
-              }
-              alt={selected.name || selected.title}
-              className="rounded-2xl w-full h-72 object-cover mb-4"
-            />
-            <h3 className="text-xl font-bold text-pink-700 mb-2 text-center">
-              {selected.name || selected.title}
-            </h3>
-            <p className="text-gray-600 mb-2 text-center">{selected.description}</p>
-            {selected.price && (
-              <p className="text-pink-600 font-bold text-lg mb-4 text-center">
-                ₹{selected.price.toLocaleString()}
-              </p>
-            )}
-            <div className="flex justify-center gap-3">
-              <button
-                onClick={() => {
-                  setSelected(null);
-                  handleInquiry(selected);
-                }}
-                className="bg-gradient-to-r from-pink-600 to-rose-600 text-white px-5 py-2 rounded-full hover:from-pink-700 hover:to-rose-700 transition font-semibold"
-              >
-                Inquire Now
-              </button>
-              <button
-                onClick={() => setSelected(null)}
-                className="bg-pink-600 text-white px-5 py-2 rounded-full hover:bg-pink-700 transition"
-              >
-                Close
-              </button>
-            </div>
-          </motion.div>
-        </div>
-      )}
-
-      {/* Inquiry Form Modal */}
-      {selectedProduct && (
-        <InquiryForm
-          isOpen={isInquiryOpen}
-          onClose={() => {
-            setIsInquiryOpen(false);
-            setSelectedProduct(null);
-          }}
-          product={{
-            ...selectedProduct,
-            badge: badge
-          }}
-          productType="WomenProduct"
-        />
-      )}
     </div>
   );
 };

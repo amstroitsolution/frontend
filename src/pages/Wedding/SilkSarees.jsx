@@ -4,7 +4,7 @@ import CollectionPage from "../../components/CollectionPage/CollectionPage";
 const SilkSarees = () => {
   return (
     <CollectionPage
-      category="Silk Sarees"
+      category="Silk Saree"
       title="Silk Sarees 🥻"
       description="Elegant silk sarees for weddings and special occasions"
       badge="SILK"

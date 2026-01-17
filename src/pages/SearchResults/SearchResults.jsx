@@ -2,17 +2,18 @@ import React, { useState, useEffect } from "react";
 import { useSearchParams, useNavigate } from "react-router-dom";
 import { FaSearch, FaSpinner } from "react-icons/fa";
 import { motion } from "framer-motion";
+import ProductCard from "../../components/ProductCard/ProductCard";
 
 export default function SearchResults() {
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();
   const query = searchParams.get("q") || "";
   const category = searchParams.get("category") || "women";
-  
+
   const [results, setResults] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
-  
+
   const API = (import.meta.env.VITE_API_BASE_URL || "https://api.yashper.com").replace(/\/$/, "");
 
   useEffect(() => {
@@ -112,59 +113,17 @@ export default function SearchResults() {
 
         {/* Results Grid */}
         {results.length > 0 && (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {results.map((result, index) => (
-              <motion.div
+              <ProductCard
                 key={result._id}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.05 }}
-                onClick={() => handleProductClick(result)}
-                className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 cursor-pointer group"
-              >
-                {/* Product Image */}
-                <div className="relative aspect-[3/4] overflow-hidden bg-gray-100">
-                  {result.images && result.images[0] ? (
-                    <img
-                      src={result.images[0]}
-                      alt={result.title}
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                    />
-                  ) : (
-                    <div className="w-full h-full flex items-center justify-center">
-                      <FaSearch className="text-gray-300 text-4xl" />
-                    </div>
-                  )}
-                  
-                  {/* Category Badge */}
-                  <div className="absolute top-3 left-3">
-                    <span className="px-3 py-1 bg-white/90 backdrop-blur-sm text-xs font-semibold text-pink-600 rounded-full">
-                      {result.type === 'kids' ? 'Kids' : 'Women'}
-                    </span>
-                  </div>
-                </div>
-
-                {/* Product Info */}
-                <div className="p-4">
-                  <h3 className="font-semibold text-gray-800 mb-1 line-clamp-2 group-hover:text-pink-600 transition-colors">
-                    {result.title}
-                  </h3>
-                  <p className="text-sm text-gray-500 mb-2">
-                    {result.category}
-                    {result.gender && ` • ${result.gender}`}
-                  </p>
-                  {result.price && (
-                    <p className="text-lg font-bold text-pink-600">
-                      ₹{result.price.toLocaleString()}
-                    </p>
-                  )}
-                  {result.description && (
-                    <p className="text-xs text-gray-400 mt-2 line-clamp-2">
-                      {result.description}
-                    </p>
-                  )}
-                </div>
-              </motion.div>
+                product={{
+                  ...result,
+                  name: result.title,
+                }}
+                productType={result.type === 'kids' ? 'KidsProduct' : 'WomenProduct'}
+                index={index}
+              />
             ))}
           </div>
         )}

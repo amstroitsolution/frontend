@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
-import { FaEnvelope, FaEye } from "react-icons/fa";
 import axios from "axios";
-import InquiryForm from "../InquiryForm/InquiryForm";
+import ProductCard from "../ProductCard/ProductCard";
 
 const API = (import.meta.env.VITE_API_BASE_URL || "https://api.yashper.com").replace(/\/$/, "");
 
@@ -14,11 +12,8 @@ const ProductPage = ({
     productType = "WomenProduct",
     apiEndpoint = "/api/women-products/active"
 }) => {
-    const navigate = useNavigate();
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(true);
-    const [selectedProduct, setSelectedProduct] = useState(null);
-    const [isInquiryOpen, setIsInquiryOpen] = useState(false);
 
     useEffect(() => {
         const fetchProducts = async () => {
@@ -45,11 +40,6 @@ const ProductPage = ({
         };
         fetchProducts();
     }, [category, apiEndpoint]);
-
-    const handleInquiry = (product) => {
-        setSelectedProduct(product);
-        setIsInquiryOpen(true);
-    };
 
     if (loading) {
         return (
@@ -82,114 +72,28 @@ const ProductPage = ({
                 transition={{ duration: 0.8 }}
                 className="text-center mb-12"
             >
-                <h1 className="text-5xl font-semibold text-pink-700 tracking-wide mb-4 drop-shadow-sm">
+                <h1 className="text-5xl md:text-6xl font-bold text-pink-700 tracking-tight mb-4 drop-shadow-sm">
                     {title}
                 </h1>
                 {description && (
-                    <p className="text-gray-600 max-w-2xl mx-auto text-sm">
+                    <p className="text-gray-600 max-w-2xl mx-auto text-lg leading-relaxed">
                         {description}
                     </p>
                 )}
+                <div className="w-24 h-1 bg-pink-500 mx-auto mt-6 rounded-full"></div>
             </motion.div>
 
             {/* Cards Grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10 max-w-7xl mx-auto">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
                 {products.map((item, i) => (
-                    <motion.div
+                    <ProductCard
                         key={item._id}
-                        whileHover={{ y: -6, scale: 1.03 }}
-                        transition={{ type: "spring", stiffness: 200 }}
-                        className="relative bg-white rounded-2xl shadow-lg overflow-hidden group hover:shadow-2xl hover:shadow-pink-100 transition-shadow duration-500"
-                    >
-                        <div className="h-[420px] overflow-hidden">
-                            <motion.img
-                                src={
-                                    item.images && item.images.length > 0
-                                        ? item.images[0].startsWith("http")
-                                            ? item.images[0]
-                                            : `${API}${item.images[0]}`
-                                        : "https://via.placeholder.com/400"
-                                }
-                                alt={item.title}
-                                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
-                            />
-                        </div>
-
-                        {/* Hover Overlay */}
-                        <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                            <div className="flex flex-col gap-3">
-                                <motion.button
-                                    whileHover={{ scale: 1.1 }}
-                                    whileTap={{ scale: 0.9 }}
-                                    onClick={() => navigate(`/product/${item._id}`)}
-                                    className="bg-white text-pink-700 px-4 py-2 rounded-full font-medium hover:bg-pink-100 transition-all flex items-center gap-2"
-                                >
-                                    <FaEye /> View Details
-                                </motion.button>
-                                <motion.button
-                                    whileHover={{ scale: 1.1 }}
-                                    whileTap={{ scale: 0.9 }}
-                                    onClick={() => handleInquiry(item)}
-                                    className="bg-gradient-to-r from-pink-600 to-rose-600 text-white px-6 py-2 rounded-full font-semibold hover:from-pink-700 hover:to-rose-700 transition-all shadow-lg flex items-center gap-2"
-                                >
-                                    <FaEnvelope /> Inquire Now
-                                </motion.button>
-                            </div>
-                        </div>
-
-                        {/* Card Info */}
-                        <div className="p-4 text-center">
-                            <h3 className="text-lg font-semibold text-gray-800">{item.title}</h3>
-                            <p className="text-gray-600 text-sm mt-1 line-clamp-2">
-                                {item.description || item.subtitle}
-                            </p>
-                            <p className="text-pink-600 font-bold text-lg mt-2">₹{item.price}</p>
-                            {item.badge && (
-                                <span className="inline-block mt-2 bg-pink-100 text-pink-600 text-xs px-3 py-1 rounded-full">
-                                    {item.badge}
-                                </span>
-                            )}
-                            <motion.button
-                                whileHover={{ scale: 1.05 }}
-                                whileTap={{ scale: 0.95 }}
-                                onClick={() => handleInquiry(item)}
-                                className="w-full mt-3 bg-gradient-to-r from-pink-600 to-rose-600 text-white px-4 py-2 rounded-lg font-semibold hover:from-pink-700 hover:to-rose-700 transition-all flex items-center justify-center space-x-2 shadow-md hover:shadow-lg"
-                            >
-                                <FaEnvelope size={14} />
-                                <span>Inquire Now</span>
-                            </motion.button>
-                        </div>
-                    </motion.div>
+                        product={item}
+                        productType={productType}
+                        index={i}
+                    />
                 ))}
             </div>
-
-            {/* Inquiry Form Modal */}
-            {selectedProduct && (
-                <InquiryForm
-                    isOpen={isInquiryOpen}
-                    onClose={() => {
-                        setIsInquiryOpen(false);
-                        setSelectedProduct(null);
-                    }}
-                    product={{
-                        _id: selectedProduct._id,
-                        title: selectedProduct.title,
-                        name: selectedProduct.title,
-                        price: selectedProduct.price,
-                        images: selectedProduct.images || [],
-                        image:
-                            selectedProduct.images && selectedProduct.images.length > 0
-                                ? selectedProduct.images[0].startsWith("http")
-                                    ? selectedProduct.images[0]
-                                    : `${API}${selectedProduct.images[0]}`
-                                : "https://via.placeholder.com/400",
-                        description: selectedProduct.description || selectedProduct.subtitle,
-                        category: selectedProduct.category || category,
-                        badge: selectedProduct.badge || "NEW"
-                    }}
-                    productType={productType}
-                />
-            )}
         </div>
     );
 };
