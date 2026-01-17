@@ -4,7 +4,7 @@ import CollectionPage from "../../components/CollectionPage/CollectionPage";
 const BridalLehengas = () => {
   return (
     <CollectionPage
-      category="Wedding → Bridal Lehengas"
+      category="Bridal Lehengas"
       title="Bridal Lehengas 👰"
       description="Stunning bridal lehengas for your special day"
       badge="BRIDAL"

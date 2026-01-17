@@ -4,7 +4,7 @@ import CollectionPage from "../../components/CollectionPage/CollectionPage";
 const PartyWearLehengas = () => {
   return (
     <CollectionPage
-      category="Wedding → Party Wear Lehengas"
+      category="Party Wear Lehengas"
       title="Party Wear Lehengas 🎉"
       description="Stunning lehengas perfect for parties and celebrations"
       badge="PARTY"

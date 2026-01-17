@@ -4,7 +4,7 @@ import CollectionPage from "../../components/CollectionPage/CollectionPage";
 const CottonSarees = () => {
   return (
     <CollectionPage
-      category="Wedding → Cotton Sarees"
+      category="Cotton Sarees"
       title="Cotton Sarees 🌸"
       description="Comfortable cotton sarees for everyday elegance"
       badge="COTTON"
